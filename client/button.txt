@@ -1,0 +1,6 @@
+<ConnectWallet
+              dropdownPosition={{
+                side: "bottom",
+                align: "center",
+              }}
+            />
