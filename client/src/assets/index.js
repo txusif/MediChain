@@ -12,6 +12,7 @@ import register from "./register.svg";
 import reports from "./reports.svg";
 import search from "./search.svg";
 import sun from "./sun.svg";
+import moon from "./moon.svg";
 import tagType from "./type.svg";
 import uploadReports from "./upload-reports.svg";
 import thirdweb from "./thirdweb.png";
@@ -23,6 +24,7 @@ export {
   payment,
   profile,
   sun,
+  moon,
   search,
   menu,
   money,

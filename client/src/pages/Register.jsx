@@ -1,9 +1,110 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "../context";
+
+import { CustomButton, FormField, Loader } from "../components";
+
+const tabsItems = ["Register as a Doctor", "Register as a Lab"];
+const TabsComponent = ({ name, onSelect, bg }) => {
+  return (
+    <li className=" mx-1 md:mx-6">
+      <div
+        onClick={onSelect}
+        className={`inline-block py-2 px-3 md:py-3 md:px-4 rounded-t-lg  hover:bg-[#0ac5a8]/80 dark:hover:bg-[#0ac5a8]/80 hover:text-gray-50 dark:hover:text-gray-800 text-[14px] md:text-[24px] cursor-pointer ${
+          bg && "bg-[#0ac5a8]/60 text-gray-700 dark:text-gray-200"
+        }`}
+      >
+        {name}
+      </div>
+    </li>
+  );
+};
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [openTab, setOpenTab] = useState(0);
+  const { address, register } = useStateContext();
+  const [form, setForm] = useState({
+    name: "",
+    id: "",
+  });
+  // console.log(openTab);
+
+  const handleForFieldChange = (fieldName, e) => {
+    setForm({ ...form, [fieldName]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(form);
+    // if (!form.name || !form.id) return;
+
+    setIsLoading(true);
+    await register(form.name, form.id, openTab);
+    setIsLoading(false);
+    navigate("/upload-reports");
+  };
+
   return (
-    <div className="font-epilogue font-semibold text-[16px] text-white">
-      Register
+    <div className="bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4">
+      {isLoading && <Loader />}
+      {/* <div className="flex justify-center items-center p-[16px] sm:min-w-[280px] bg-[#3a3a43] rounded-[10px]"> */}
+      <ul className="flex flex-wrap text-sm font-medium text-center text-white border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+        {tabsItems.map((item, index) => (
+          <TabsComponent
+            key={index}
+            bg={openTab === index && true}
+            name={item}
+            onSelect={() => setOpenTab(index)}
+          />
+        ))}
+      </ul>
+      {/* <h1 className="font-epilogue font-bold sm:text[25px] text-[18px] leading-[38px] text-white">
+          Register
+        </h1> */}
+      {/* </div> */}
+
+      <form
+        onSubmit={handleSubmit}
+        className="w-[420px] mt-[45px] flex flex-col gap-[30px]"
+      >
+        <FormField
+          labelName="Name *"
+          placeholder={openTab === 0 ? "Dr Tameez" : "AJ Diagnostic"}
+          inputType="text"
+          value={form.name}
+          handleChange={(e) => {
+            handleForFieldChange("name", e);
+          }}
+        />
+
+        <FormField
+          labelName="Address *"
+          placeholder="Your wallet address"
+          inputType="text"
+          value={address}
+        />
+
+        <FormField
+          labelName="Unique Id *"
+          placeholder="Enter your unique id"
+          inputType="text"
+          value={form.id}
+          handleChange={(e) => {
+            handleForFieldChange("id", e);
+          }}
+        />
+
+        <div className="flex justify-center items-center">
+          <CustomButton
+            btnType="submit"
+            title="Register"
+            styles="bg-[#1dc071]"
+            isConnected={address}
+          />
+        </div>
+      </form>
     </div>
   );
 };

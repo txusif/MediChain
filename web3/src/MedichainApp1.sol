@@ -54,7 +54,7 @@ contract MedichainApp1 is ChainlinkClient {
         address applicantAddress;
         string name;
         string auth_id;
-        uint256 applyId; // 0= doctor, 1= lab
+        uint256 applyId; // 0= Doctor, 1= Lab
     }
 
     struct Campaign {
@@ -385,5 +385,8 @@ contract MedichainApp1 is ChainlinkClient {
         }
 
         return allCampaigns;
+        // if (allCampaigns.deadline > block.timestamp) {
+        // return allCampaigns;
+        // }
     }
 }

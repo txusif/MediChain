@@ -5,10 +5,11 @@ import { ConnectMetamask } from "../components";
 import { logo, menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
 import { useStateContext } from "../context";
+import { Icon } from "../components";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState("home");
+  const [isActive, setIsActive] = useState("Home");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const { address, connect } = useStateContext();
 
@@ -46,11 +47,20 @@ const Navbar = () => {
       {/* Small screen navigation */}
       <div className="sm:hidden flex justify-between items-center relative">
         <div className="w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer">
-          <img
-            src={logo}
-            alt="user"
-            className="w-[60%] h-[60%] object-contain"
-          />
+          <Link to="/">
+            {/* <img
+              src={logo}
+              alt="user"
+              className="w-[60%] h-[60%] object-contain"
+            /> */}
+            <Icon
+              styles="w-[52px] h-[52px] bg-[#2c2f32]"
+              imgUrl={logo}
+              handleClick={() => {
+                setIsActive("Home");
+              }}
+            />
+          </Link>
         </div>
 
         <img

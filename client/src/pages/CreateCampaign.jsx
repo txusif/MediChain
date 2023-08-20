@@ -21,7 +21,7 @@ const CreateCampaign = () => {
     image: "",
   });
 
-  const handleForlFieldChange = (fieldName, e) => {
+  const handleForFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value });
   };
 
@@ -75,7 +75,7 @@ const CreateCampaign = () => {
             inputType="text"
             value={form.name}
             handleChange={(e) => {
-              handleForlFieldChange("name", e);
+              handleForFieldChange("name", e);
             }}
           />
           <FormField
@@ -84,7 +84,7 @@ const CreateCampaign = () => {
             inputType="text"
             value={form.title}
             handleChange={(e) => {
-              handleForlFieldChange("title", e);
+              handleForFieldChange("title", e);
             }}
           />
         </div>
@@ -94,7 +94,7 @@ const CreateCampaign = () => {
           isTextArea
           value={form.description}
           handleChange={(e) => {
-            handleForlFieldChange("description", e);
+            handleForFieldChange("description", e);
           }}
         />
         <div className="w-full flex flex-row justify-start items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]">
@@ -114,7 +114,7 @@ const CreateCampaign = () => {
           inputType="text"
           value={form.fileHash}
           handleChange={(e) => {
-            handleForlFieldChange("fileHash", e);
+            handleForFieldChange("fileHash", e);
           }}
         />
 
@@ -125,7 +125,7 @@ const CreateCampaign = () => {
             inputType="number"
             value={form.target}
             handleChange={(e) => {
-              handleForlFieldChange("target", e);
+              handleForFieldChange("target", e);
             }}
           />
           <FormField
@@ -134,7 +134,7 @@ const CreateCampaign = () => {
             inputType="date"
             value={form.deadline}
             handleChange={(e) => {
-              handleForlFieldChange("deadline", e);
+              handleForFieldChange("deadline", e);
             }}
           />
         </div>
@@ -145,7 +145,7 @@ const CreateCampaign = () => {
           inputType="url"
           value={form.image}
           handleChange={(e) => {
-            handleForlFieldChange("image", e);
+            handleForFieldChange("image", e);
           }}
         />
 
@@ -154,6 +154,7 @@ const CreateCampaign = () => {
             btnType="submit"
             title="Submit new campaign"
             styles="bg-[#1dc071]"
+            isConnected={address}
           />
         </div>
       </form>

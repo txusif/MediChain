@@ -26,10 +26,13 @@ const CampaignDetails = () => {
   }, [address, contract]);
 
   const handleDonate = async () => {
-    setIsLoading(true);
-    await donate(state.pId, amount);
-    navigate("/campaigns");
-    setIsLoading(false);
+    if (amount) {
+      console.log(amount);
+      setIsLoading(true);
+      await donate(state.pId, amount);
+      navigate("/campaigns");
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,9 +46,13 @@ const CampaignDetails = () => {
             alt="campaign"
             className="w-full h-[410px] object-cover rounded-xl"
           />
-          <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
+          <div className="relative w-full h-[10px] bg-[#3a3a43] mt-2 rounded-[10px]">
             <div
-              className="absolute h-full bg-[#4acd8d]"
+              className={`absolute h-full bg-[#4acd8d] ${
+                state.amountCollected === state.target
+                  ? "rounded-[10px]"
+                  : "rounded-l-[10px]"
+              }`}
               style={{
                 width: `${calculateBarPercentage(
                   state.target,
@@ -166,6 +173,7 @@ const CampaignDetails = () => {
                 title="Fund the campaign"
                 styles="w-full bg-[#8c6dfd] mt-[20px] mb-[8px]"
                 handleClick={handleDonate}
+                isConnected={address}
               />
             </div>
           </div>
