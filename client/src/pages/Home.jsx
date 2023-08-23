@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
 import { CustomButton } from "../components";
-import { FileUploadComponent } from "../components";
 
 const Home = () => {
   const {
@@ -71,8 +70,6 @@ const Home = () => {
         handleClick={handleFetch}
         isConnected={address}
       />
-
-      <FileUploadComponent />
     </div>
   );
 };

@@ -1,16 +1,24 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context";
 
-import { CustomButton, FormField, Loader } from "../components";
+import {
+  CustomButton,
+  FormField,
+  Loader,
+  FileUploadComponent,
+} from "../components";
 import { uploadReports } from "../assets";
 
 const UploadReports = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { address, saveReport } = useStateContext();
+
+  const [contentId, setContentId] = useState(null);
+  const [fileURI, setFileURI] = useState(null);
   const [form, setForm] = useState({
-    fileHash: "",
+    fileHash: contentId,
     category: "",
     userAddress: "",
 
@@ -43,7 +51,7 @@ const UploadReports = () => {
 
     setIsLoading(true);
     console.log(formatedForm);
-    await saveReport({ ...formatedForm });
+    await saveReport({ ...formatedForm, fileHash: contentId });
 
     setIsLoading(false);
   };
@@ -65,7 +73,7 @@ const UploadReports = () => {
         <div className="flex flex-wrap gap-[40px]">
           <FormField
             labelName="Patient Address *"
-            placeholder="John Doe"
+            placeholder="0x63aCF7f4ccff48A3378b304bdAb9CA0b98aFE70F"
             inputType="text"
             value={form.userAddress}
             handleChange={(e) => {
@@ -85,12 +93,10 @@ const UploadReports = () => {
 
         <FormField
           labelName="File Hash *"
-          placeholder="File hash of your document"
+          placeholder="Upload report to get the file hash"
           inputType="text"
-          value={form.fileHash}
-          handleChange={(e) => {
-            handleForFieldChange("fileHash", e);
-          }}
+          value={contentId}
+          isDisabled
         />
 
         <div className="flex flex-wrap gap-[40px]">
@@ -152,6 +158,14 @@ const UploadReports = () => {
             isConnected={address}
           />
         </div>
+
+        <FileUploadComponent
+          address={address}
+          contentId={contentId}
+          setContentId={setContentId}
+          fileURI={fileURI}
+          setFileURI={setFileURI}
+        />
       </form>
     </div>
   );

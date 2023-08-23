@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useStateContext } from "../context";
 import { CustomButton } from "../components";
 
-const FileUploadComponent = () => {
-  const { address } = useStateContext();
+const FileUploadComponent = ({
+  address,
+  contentId,
+  setContentId,
+  fileURI,
+  setFileURI,
+}) => {
+  // const { address } = useStateContext();
 
   const [file, setFile] = useState(null);
-  const [contentId, setContentId] = useState(null);
+  // const [contentId, setContentId] = useState(null);
 
   const handleFileChange = (event) => {
     console.log(contentId);
@@ -35,11 +40,12 @@ const FileUploadComponent = () => {
           },
         }
       );
-      console.log(response);
-      console.log(response.data.IpfsHash);
+
+      setContentId(response.data.IpfsHash);
 
       const ipfsUrl = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
-      setContentId(ipfsUrl);
+
+      setFileURI(ipfsUrl);
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -65,13 +71,6 @@ const FileUploadComponent = () => {
           isConnected={address && file}
         />
       </div>
-
-      {contentId && (
-        <div>
-          <h3>Uploaded Content ID:</h3>
-          <p>{contentId}</p>
-        </div>
-      )}
     </div>
   );
 };
