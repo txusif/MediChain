@@ -15,8 +15,8 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    console.log("contract:", contract);
-    console.log("address: ", address);
+    // console.log("contract:", contract);
+    // console.log("address: ", address);
     if (contract) fetchCampaigns();
   }, [address, contract]);
 
