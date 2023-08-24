@@ -11,7 +11,7 @@ const FileUploadComponent = ({
 }) => {
   // const { address } = useStateContext();
 
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("");
   // const [contentId, setContentId] = useState(null);
 
   const handleFileChange = (event) => {

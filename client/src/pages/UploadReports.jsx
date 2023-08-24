@@ -8,6 +8,7 @@ import {
   Loader,
   FileUploadComponent,
 } from "../components";
+
 import { uploadReports } from "../assets";
 
 const UploadReports = () => {
@@ -15,8 +16,8 @@ const UploadReports = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { address, saveReport } = useStateContext();
 
-  const [contentId, setContentId] = useState(null);
-  const [fileURI, setFileURI] = useState(null);
+  const [contentId, setContentId] = useState("");
+  const [fileURI, setFileURI] = useState("");
   const [form, setForm] = useState({
     fileHash: contentId,
     category: "",
