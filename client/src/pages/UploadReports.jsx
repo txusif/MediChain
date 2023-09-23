@@ -12,7 +12,7 @@ import {
 import { uploadReports } from "../assets";
 
 const UploadReports = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { address, saveReport } = useStateContext();
 
@@ -55,14 +55,19 @@ const UploadReports = () => {
     await saveReport({ ...formatedForm, fileHash: contentId });
 
     setIsLoading(false);
+    navigate("/reports");
   };
 
   return (
     <div className="bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4">
       {isLoading && <Loader />}
-      <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]">
-        <h1 className="font-epilogue font-bold sm:text[25px] text-[18px] leading-[38px] text-white">
-          <img src={uploadReports} alt="uploadReports" />
+      <div className="flex justify-center items-center gap-[5px] p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]">
+        <img
+          src={uploadReports}
+          alt="uploadReports"
+          className="flex h-[40px] w-[40px] items-center justify-center"
+        />
+        <h1 className="font-epilogue font-bold sm:text[25px] text-[18px] leading-[38px] items-center justify-center text-white">
           Upload Report
         </h1>
       </div>
@@ -71,6 +76,24 @@ const UploadReports = () => {
         onSubmit={handleSubmit}
         className="w-full mt-[65px] flex flex-col gap-[30px]"
       >
+        <div className="py-[15px] sm:px-[25px] px-[15px] outline-none bg-[#3a3a43] font-epilogue text-white text-[14px] rounded-[10px] sm:min-w-[300px] flex items-center">
+          <FileUploadComponent
+            address={address}
+            contentId={contentId}
+            setContentId={setContentId}
+            fileURI={fileURI}
+            setFileURI={setFileURI}
+          />
+        </div>
+
+        <FormField
+          labelName="File Hash *"
+          placeholder="Upload report to get the file hash"
+          inputType="text"
+          value={contentId}
+          isDisabled
+        />
+
         <div className="flex flex-wrap gap-[40px]">
           <FormField
             labelName="Patient Address *"
@@ -91,14 +114,6 @@ const UploadReports = () => {
             }}
           />
         </div>
-
-        <FormField
-          labelName="File Hash *"
-          placeholder="Upload report to get the file hash"
-          inputType="text"
-          value={contentId}
-          isDisabled
-        />
 
         <div className="flex flex-wrap gap-[40px]">
           <FormField
@@ -160,13 +175,13 @@ const UploadReports = () => {
           />
         </div>
 
-        <FileUploadComponent
+        {/* <FileUploadComponent
           address={address}
           contentId={contentId}
           setContentId={setContentId}
           fileURI={fileURI}
           setFileURI={setFileURI}
-        />
+        /> */}
       </form>
     </div>
   );

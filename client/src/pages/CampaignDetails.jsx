@@ -173,7 +173,7 @@ const CampaignDetails = () => {
                 title="Fund the campaign"
                 styles="w-full bg-[#8c6dfd] mt-[20px] mb-[8px]"
                 handleClick={handleDonate}
-                isConnected={address}
+                isConnected={address && (address!==state.owner)}
               />
             </div>
           </div>

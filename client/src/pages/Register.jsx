@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context";
 
 import { CustomButton, FormField, Loader } from "../components";
 
-const tabsItems = ["Register as a Doctor", "Register as a Lab"];
+const tabsItems = ["Register as Doctor", "Register as Lab"];
+
 const TabsComponent = ({ name, onSelect, bg }) => {
   return (
     <li className=" mx-1 md:mx-6">
@@ -21,10 +22,14 @@ const TabsComponent = ({ name, onSelect, bg }) => {
 };
 
 const Register = () => {
+  const { address, contract, register, isDoctor, isLab } = useStateContext();
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [openTab, setOpenTab] = useState(0);
-  const { address, register } = useStateContext();
+  const [isAuthorisedDoctor, setIsAuthorisedDoctor] = useState(false);
+  const [isAuthorisedLab, setIsAuthorisedLab] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     id: "",
@@ -46,6 +51,20 @@ const Register = () => {
     navigate("/upload-reports");
   };
 
+  const fetch = async () => {
+    const isAuthDoctor = await isDoctor(address);
+    setIsAuthorisedDoctor(isAuthDoctor);
+    // console.log("Doctor: " + isAuthDoctor);
+
+    const isAuthLab = await isLab(address);
+    setIsAuthorisedLab(isAuthLab);
+    // console.log("Lab: " + isAuthLab);
+  };
+
+  useEffect(() => {
+    if (contract) fetch();
+  }, [address, contract]);
+
   return (
     <div className="bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4">
       {isLoading && <Loader />}
@@ -60,51 +79,58 @@ const Register = () => {
           />
         ))}
       </ul>
-      {/* <h1 className="font-epilogue font-bold sm:text[25px] text-[18px] leading-[38px] text-white">
-          Register
-        </h1> */}
-      {/* </div> */}
 
-      <form
-        onSubmit={handleSubmit}
-        className="w-[420px] mt-[45px] flex flex-col gap-[30px]"
-      >
-        <FormField
-          labelName="Name *"
-          placeholder={openTab === 0 ? "Dr Tameez" : "AJ Diagnostic"}
-          inputType="text"
-          value={form.name}
-          handleChange={(e) => {
-            handleForFieldChange("name", e);
-          }}
-        />
-
-        <FormField
-          labelName="Address *"
-          placeholder="Your wallet address"
-          inputType="text"
-          value={address}
-        />
-
-        <FormField
-          labelName="Unique Id *"
-          placeholder="Enter your unique id"
-          inputType="text"
-          value={form.id}
-          handleChange={(e) => {
-            handleForFieldChange("id", e);
-          }}
-        />
-
-        <div className="flex justify-center items-center">
-          <CustomButton
-            btnType="submit"
-            title="Register"
-            styles="bg-[#1dc071]"
-            isConnected={address}
+      {openTab === 0 && isAuthorisedDoctor ? (
+        <p className="font-epilogue text-white text-[20px] md:text-[25px] font-semibold items-center flex min-h-[440px]">
+          You are already registered as Doctor
+        </p>
+      ) : openTab === 1 && isAuthorisedLab ? (
+        <p className="font-epilogue text-white text-[20px] md:text-[25px] font-semibold items-center flex min-h-[440px]">
+          You are already registered as Lab
+        </p>
+      ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="w-[420px] mt-[45px] flex flex-col gap-[30px]"
+        >
+          <FormField
+            labelName="Name *"
+            placeholder={openTab === 0 ? "Dr Tameez" : "AJ Diagnostic"}
+            inputType="text"
+            value={form.name}
+            handleChange={(e) => {
+              handleForFieldChange("name", e);
+            }}
           />
-        </div>
-      </form>
+
+          <FormField
+            labelName="Address *"
+            placeholder="Your wallet address"
+            inputType="text"
+            value={address}
+            isDisabled
+          />
+
+          <FormField
+            labelName="Unique Id *"
+            placeholder="Enter your unique id"
+            inputType="text"
+            value={form.id}
+            handleChange={(e) => {
+              handleForFieldChange("id", e);
+            }}
+          />
+
+          <div className="flex justify-center items-center">
+            <CustomButton
+              btnType="submit"
+              title="Register"
+              styles="bg-[#1dc071]"
+              isConnected={address}
+            />
+          </div>
+        </form>
+      )}
     </div>
   );
 };

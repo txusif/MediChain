@@ -53,20 +53,20 @@ const FileUploadComponent = ({
 
   return (
     <div>
-      <div className="flex flex-col">
-        <h2 className="mb-4 font-epilogue font-semibold text-white">
-          Upload PDF to Pinata
-        </h2>
+      <div className="flex">
+        {/* <h2 className="mb-4 font-epilogue font-semibold text-white">
+          Upload PDF
+        </h2> */}
         <input
           type="file"
           accept=".pdf"
           onChange={handleFileChange}
-          className="font-epilogue font-semibold text-white rounded-l-[10px] bg-[#131324]  w-[235px] cursor-pointer"
+          className="font-epilogue font-semibold items-center justify-center w- text-white rounded-l-[10px] h-[29px] cursor-pointer"
         />
         <CustomButton
           btnType="button"
           title="Upload"
-          styles="bg-[#1dc071] my-[40px] w-[100px]"
+          styles="bg-[#1dc071] w-[100px] text-[12px] py-[2px] min-h-[20px]"
           handleClick={handleUpload}
           isConnected={address && file}
         />
