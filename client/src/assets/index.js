@@ -16,6 +16,7 @@ import moon from "./moon.svg";
 import tagType from "./type.svg";
 import uploadReports from "./upload-reports.svg";
 import thirdweb from "./thirdweb.png";
+import docImage from "./docImage.png";
 
 export {
   tagType,
@@ -30,6 +31,7 @@ export {
   money,
   loader,
   thirdweb,
+  docImage,
   campaigns,
   home,
   register,

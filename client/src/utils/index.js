@@ -5,6 +5,33 @@ export const daysLeft = (deadline) => {
   return remainingDays.toFixed(0);
 };
 
+export const uploadDate = (dateInEpoch) => {
+  const date = new Date(dateInEpoch * 1000);
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const day = date.getDate();
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
+
+  const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
+  // console.log(formattedDate);
+
+  return formattedDate;
+};
+
 export const calculateBarPercentage = (goal, raisedAmount) => {
   const percentage = Math.round((raisedAmount * 100) / goal);
 

@@ -66,7 +66,7 @@ const FileUploadComponent = ({
         <CustomButton
           btnType="button"
           title="Upload"
-          styles="bg-[#1dc071] w-[100px] text-[12px] py-[2px] min-h-[20px]"
+          styles="flex items-center justify center bg-[#1dc071] w-auto text-[12px] py-[2px] min-h-[8px]"
           handleClick={handleUpload}
           isConnected={address && file}
         />

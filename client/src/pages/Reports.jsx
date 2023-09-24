@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
-import { CustomButton } from "../components";
+import { CustomButton, DisplayReports } from "../components";
 
 const Reports = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { address, contract, getUserReports, getDetailedReport } =
     useStateContext();
   const [contentId, setContentId] = useState([]);
   const fileURI = `https://gateway.pinata.cloud/ipfs/`;
 
   const fetch = async () => {
+    setIsLoading(true);
+
     const userReports = await getUserReports(address);
     // const detailedReport = await getDetailedReport(userReports[0]);
     // const detailedReport1 = await getDetailedReport(userReports[1]);
-    console.log("User Reports");
-    console.log(userReports);
+    // console.log("User Reports");
+    // console.log(userReports);
     // console.log("Detailed Reports");
     // console.log(detailedReport);
     // console.log(detailedReport1);
@@ -22,43 +25,26 @@ const Reports = () => {
 
     for (let i = 0; i < userReports.length; i++) {
       const detailedReport = await getDetailedReport(userReports[i]);
+      console.log(detailedReport);
       setContentId((prev) => [...prev, detailedReport]);
     }
+    setIsLoading(false);
   };
 
-  const handleFetch = () => {
+  useEffect(() => {
     if (contract) fetch();
-  };
-  return (
-    <div className="font-epilogue font-semibold text-[16px] text-white">
-      <CustomButton
-        btnType="button"
-        title="Get Reports"
-        styles="bg-[#1dc071] mb-[40px]"
-        handleClick={handleFetch}
-        isConnected={address}
-      />
-      {contentId && (
-        <div className="flex justify-center items-center">
-          {/* <p className="">{contentId.category}</p> */}
+  }, [address, contract]);
 
-          <div className="flex flex-col">
-            {contentId.map((content) => (
-              <a
-                key={content.fileHash}
-                href={fileURI + content.fileHash}
-                target="_blank"
-                className="p-4 mb-4 rounded-[10px] text-center bg-[#1dc071]"
-              >
-                <span className="text-red-600 uppercase pr-4">
-                  {content.category} 👉
-                </span>
-                View Report
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
+  return (
+    <div>
+      {/* {contentId[0].fileHash}
+      {contentId[1].fileHash} */}
+
+      <DisplayReports
+        title="Your Reports"
+        isLoading={isLoading}
+        reports={contentId}
+      />
     </div>
   );
 };
