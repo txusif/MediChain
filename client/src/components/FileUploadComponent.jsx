@@ -71,7 +71,14 @@ const FileUploadComponent = ({
             handleClick={handleUpload}
             isConnected={address && file}
           /> */}
-          <button type="button" className="bg-[#1dc071] text-white p-4 flex justify-center  items-center font-epilogue font-semibold rounded-[10px]" onClick={handleUpload}>Upload</button>
+          <button
+            type="button"
+            className="bg-[#1dc071] text-white p-4 flex justify-center  items-center font-epilogue font-semibold rounded-[10px]"
+            onClick={handleUpload}
+            disabled={!(address && file)}
+          >
+            Upload
+          </button>
         </div>
       </div>
     </div>

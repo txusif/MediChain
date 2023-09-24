@@ -37,7 +37,7 @@ const FormField = ({
           step="1"
           placeholder={placeholder}
           className="py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#3a3a43]
-          bg-transparent font-epilogue text-white text-[13.5px] sm:text-[14px] placeholder:text-[#4b5264] rounded-[10px] sm:min-w-[300px]"
+          bg-transparent font-epilogue text-white text-[10.5px] sm:text-[14px] placeholder:text-[#4b5264] rounded-[10px] sm:min-w-[300px]"
           disabled={isDisabled}
         />
       )}
