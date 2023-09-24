@@ -63,13 +63,16 @@ const FileUploadComponent = ({
           onChange={handleFileChange}
           className="font-epilogue font-semibold items-center justify-center w- text-white rounded-l-[10px] h-[29px] cursor-pointer"
         />
-        <CustomButton
-          btnType="button"
-          title="Upload"
-          styles="flex items-center justify center bg-[#1dc071] w-auto text-[12px] py-[2px] min-h-[8px]"
-          handleClick={handleUpload}
-          isConnected={address && file}
-        />
+        <div className="h-6 flex">
+          {/* <CustomButton
+            btnType="button"
+            title="Upload"
+            styles="flex items-center justify center bg-[#1dc071] text-[12px]"
+            handleClick={handleUpload}
+            isConnected={address && file}
+          /> */}
+          <button className="bg-[#1dc071] text-white p-4 flex justify-center  items-center font-epilogue font-semibold rounded-[10px]">Upload</button>
+        </div>
       </div>
     </div>
   );

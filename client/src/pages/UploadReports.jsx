@@ -76,7 +76,7 @@ const UploadReports = () => {
         onSubmit={handleSubmit}
         className="w-full mt-[65px] flex flex-col gap-[30px]"
       >
-        <div className="py-[15px] sm:px-[25px] px-[15px] outline-none bg-[#3a3a43] font-epilogue text-white text-[14px] rounded-[10px] sm:min-w-[300px] flex items-center">
+        <div className="p-3 rounded-[10px] sm:w-[400px] outline-none border-[1px] border-[#3a3a43]">
           <FileUploadComponent
             address={address}
             contentId={contentId}

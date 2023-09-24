@@ -32,7 +32,7 @@ const Reports = () => {
   };
 
   useEffect(() => {
-    if (contract) fetch();
+    if (contract && address) fetch();
   }, [address, contract]);
 
   return (
