@@ -28,7 +28,7 @@ const ReportCard = ({
 
       <div className="flex flex-col p-4">
         <div className="block">
-          <h4 className="font-epilogue mb-[10px] font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
+          <h4 className="font-epilogue mb-[10px] font-semibold text-[15px] text-[#b2b3bd] leading-[22px]">
             {category}
           </h4>
         </div>

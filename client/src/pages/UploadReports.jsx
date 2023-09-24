@@ -177,7 +177,7 @@ const UploadReports = () => {
         <div className="flex justify-center items-center mt-[10px]">
           <CustomButton
             btnType="submit"
-            title="Upload"
+            title="Upload Report"
             styles="bg-[#1dc071]"
             isConnected={address}
           />
