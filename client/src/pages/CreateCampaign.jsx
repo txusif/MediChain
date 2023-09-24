@@ -66,7 +66,7 @@ const CreateCampaign = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="w-full mt-[65px] flex flex-col gap-[30px]"
+        className="w-full sm:mt-[50px] mt-[35px] flex flex-col gap-[30px]"
       >
         <div className="flex flex-wrap gap-[40px]">
           <FormField
