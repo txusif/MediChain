@@ -116,6 +116,7 @@ const CreateCampaign = () => {
           handleChange={(e) => {
             handleForFieldChange("fileHash", e);
           }}
+          smallerFont="text-[10px]"
         />
 
         <div className="flex flex-wrap gap-[40px]">

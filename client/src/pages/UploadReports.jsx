@@ -92,6 +92,7 @@ const UploadReports = () => {
           inputType="text"
           value={contentId}
           isDisabled
+          smallerFont="text-[10px]"
         />
 
         <div className="flex flex-wrap gap-[40px]">
@@ -103,6 +104,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("userAddress", e);
             }}
+            smallerFont="text-[11.5px]"
           />
           <FormField
             labelName="Category *"
@@ -112,6 +114,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("category", e);
             }}
+            smallerFont="text-[13px]"
           />
         </div>
 
@@ -124,6 +127,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("age", e);
             }}
+            smallerFont="text-[13px]"
           />
           <FormField
             labelName="Height *"
@@ -133,6 +137,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("height", e);
             }}
+            smallerFont="text-[13px]"
           />
           <FormField
             labelName="Weight *"
@@ -142,6 +147,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("weight", e);
             }}
+            smallerFont="text-[13px]"
           />
         </div>
 
@@ -154,6 +160,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("gender", e);
             }}
+            smallerFont="text-[13px]"
           />
           <FormField
             labelName="Blood Group *"
@@ -163,6 +170,7 @@ const UploadReports = () => {
             handleChange={(e) => {
               handleForFieldChange("bloodGroup", e);
             }}
+            smallerFont="text-[13px]"
           />
         </div>
 
