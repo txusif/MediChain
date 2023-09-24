@@ -174,7 +174,7 @@ const UploadReports = () => {
           />
         </div>
 
-        <div className="flex justify-center items-center mt-[40px]">
+        <div className="flex justify-center items-center mt-[10px]">
           <CustomButton
             btnType="submit"
             title="Upload"

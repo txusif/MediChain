@@ -150,10 +150,10 @@ const CreateCampaign = () => {
           }}
         />
 
-        <div className="flex justify-center items-center mt-[40px]">
+        <div className="flex justify-center items-center mt-[10px]">
           <CustomButton
             btnType="submit"
-            title="Submit new campaign"
+            title="Submit Campaign"
             styles="bg-[#1dc071]"
             isConnected={address}
           />
