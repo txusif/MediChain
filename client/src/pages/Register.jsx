@@ -81,11 +81,11 @@ const Register = () => {
       </ul>
 
       {openTab === 0 && isAuthorisedDoctor ? (
-        <p className="font-epilogue text-white text-[20px] md:text-[25px] font-semibold items-center flex min-h-[440px]">
+        <p className="font-epilogue text-white text-[16px] sm:text-[25px] font-semibold items-center flex min-h-[440px]">
           You are already registered as Doctor
         </p>
       ) : openTab === 1 && isAuthorisedLab ? (
-        <p className="font-epilogue text-white text-[20px] md:text-[25px] font-semibold items-center flex min-h-[440px]">
+        <p className="font-epilogue text-white text-[16px] sm:text-[25px] font-semibold items-center flex min-h-[440px]">
           You are already registered as Lab
         </p>
       ) : (
