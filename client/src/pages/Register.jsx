@@ -91,7 +91,7 @@ const Register = () => {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="w-[420px] mt-[45px] flex flex-col gap-[30px]"
+          className="sm:w-[420px] w-[330px] mt-[45px] flex flex-col gap-[30px]"
         >
           <FormField
             labelName="Name *"
