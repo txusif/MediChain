@@ -8,6 +8,7 @@ import {
   Register,
   UploadReports,
   Reports,
+  SearchReport,
   Profile,
   CreateCampaign,
   Campaigns,
@@ -92,6 +93,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/upload-reports" element={<UploadReports />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/search-report" element={<SearchReport />} />
           <Route path="/create-campaign" element={<CreateCampaign />} />
           <Route path="/campaigns" element={<Campaigns />} />
           <Route path="/campaign-details/:id" element={<CampaignDetails />} />

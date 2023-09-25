@@ -2,6 +2,7 @@ import {
   home,
   register,
   uploadReports,
+  searchReport,
   reports,
   createCampaign,
   campaigns,
@@ -28,6 +29,11 @@ export const navlinks = [
     name: "Reports",
     imgUrl: reports,
     link: "/reports",
+  },
+  {
+    name: "Search Report",
+    imgUrl: searchReport,
+    link: "/search-report",
   },
   {
     name: "Create Campaign",

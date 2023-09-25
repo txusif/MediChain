@@ -7,7 +7,7 @@ const Reports = () => {
   const { address, contract, getUserReports, getDetailedReport } =
     useStateContext();
   const [contentId, setContentId] = useState([]);
-  const fileURI = `https://gateway.pinata.cloud/ipfs/`;
+  // const fileURI = `https://gateway.pinata.cloud/ipfs/`;
 
   const fetch = async () => {
     setIsLoading(true);
@@ -32,6 +32,7 @@ const Reports = () => {
   };
 
   useEffect(() => {
+    setContentId([]);
     if (contract && address) fetch();
   }, [address, contract]);
 

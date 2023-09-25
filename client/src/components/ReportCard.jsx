@@ -39,7 +39,7 @@ const ReportCard = ({
           </p>
           <p className="flex-1 font-epilogue font-normal text-[13px] sm:text-[12px] text-[#b2b3bd] truncate">
             {/* {lab} */}
-            {lab.slice(0, 12)}...{lab.slice(26)}
+            {lab.slice(0, 12)}...{lab.slice(30)}
           </p>
         </div>
 

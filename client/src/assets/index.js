@@ -4,6 +4,7 @@ import home from "./home.svg";
 
 import loader from "./loader.svg";
 import logo from "./logo.svg";
+import mainLogo from "./mainLogo.svg";
 import menu from "./menu.svg";
 import money from "./money.svg";
 import payment from "./payment.svg";
@@ -15,6 +16,7 @@ import sun from "./sun.svg";
 import moon from "./moon.svg";
 import tagType from "./type.svg";
 import uploadReports from "./upload-reports.svg";
+import searchReport from "./search-report.svg";
 import thirdweb from "./thirdweb.png";
 import docImage from "./docImage.png";
 
@@ -22,6 +24,7 @@ export {
   tagType,
   createCampaign,
   logo,
+  mainLogo,
   payment,
   profile,
   sun,
@@ -37,4 +40,5 @@ export {
   register,
   reports,
   uploadReports,
+  searchReport,
 };

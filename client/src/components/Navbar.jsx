@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { ConnectMetamask } from "../components";
-import { logo, menu, search, thirdweb } from "../assets";
+import { logo, mainLogo, menu, search, thirdweb } from "../assets";
 import { navlinks } from "../constants";
 import { useStateContext } from "../context";
 import { Icon } from "../components";
@@ -15,8 +15,11 @@ const Navbar = () => {
 
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
-      <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px]">
-        <input
+      <div className="lg:flex-1 flex flex-row max-w-[250px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-bl-[20px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px]">
+        <h1 className="font-epilogue tracking-wider flex font-bold text-[#1dc071] m-auto text-[26px] items-center">
+          MediChain
+        </h1>{" "}
+        {/* <input
           type="text"
           placeholder="Search for campaigns"
           className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
@@ -28,9 +31,8 @@ const Navbar = () => {
             alt="search"
             className="w-[15px] h-[15px] object-contain"
           />
-        </div>
+        </div> */}
       </div>
-
       <div className="sm:flex hidden flex-row justify-end gap-4">
         <ConnectMetamask />
         <Link to="/profile">

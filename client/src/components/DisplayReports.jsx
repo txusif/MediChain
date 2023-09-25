@@ -2,10 +2,12 @@ import React from "react";
 import { loader } from "../assets";
 import ReportCard from "./ReportCard";
 
-const DisplayCampaigns = ({ title, isLoading, reports }) => {
+const DisplayReports = ({ title, isLoading, reports, titleSize }) => {
   return (
     <div>
-      <h1 className="font-epilogue text-center sm:text-left font-bold text-[18px] text-white ">
+      <h1
+        className={`font-epilogue text-center sm:text-left font-bold text-[18px] text-white ${titleSize} `}
+      >
         {title} ({reports.length})
       </h1>
 
@@ -34,4 +36,4 @@ const DisplayCampaigns = ({ title, isLoading, reports }) => {
   );
 };
 
-export default DisplayCampaigns;
+export default DisplayReports;

@@ -11,7 +11,7 @@ const TabsComponent = ({ name, onSelect, bg }) => {
     <li className=" mx-1 md:mx-6">
       <div
         onClick={onSelect}
-        className={`font-epilogue inline-block py-2 px-3 md:py-3 md:px-4 rounded-t-lg  hover:bg-[#0ac5a8]/80 dark:hover:bg-[#0ac5a8]/80 hover:text-gray-50 dark:hover:text-gray-800 text-[14px] md:text-[24px] cursor-pointer ${
+        className={`font-epilogue font-semibold inline-block py-2 px-3 md:py-3 md:px-4 rounded-t-lg  hover:bg-[#0ac5a8]/80 dark:hover:bg-[#0ac5a8]/80 hover:text-gray-50 dark:hover:text-gray-800 text-[14px] md:text-[24px] cursor-pointer ${
           bg && "bg-[#0ac5a8]/60 text-gray-700 dark:text-gray-200"
         }`}
       >

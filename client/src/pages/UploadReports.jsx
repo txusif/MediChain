@@ -55,7 +55,7 @@ const UploadReports = () => {
     await saveReport({ ...formatedForm, fileHash: contentId });
 
     setIsLoading(false);
-    navigate("/reports");
+    navigate("/search-report");
   };
 
   return (

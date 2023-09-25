@@ -31,7 +31,7 @@ const Campaigns = () => {
   return (
     <div>
       <DisplayCampaigns
-        title="All campaigns"
+        title="All Campaigns"
         isLoading={isLoading}
         // campaigns={campaigns}
         campaigns={validCampaigns}

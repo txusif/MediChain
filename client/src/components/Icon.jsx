@@ -2,7 +2,7 @@ import React from "react";
 
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
   <div
-    className={`w-[48px] h-[48px] rounded-[10px] ${
+    className={`w-[50px] h-[50px] rounded-[10px] ${
       isActive && isActive === name && "bg-[#2c2f32]"
     } flex justify-center items-center ${
       !disabled && "cursor-pointer"
