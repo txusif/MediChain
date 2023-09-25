@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="lg:flex-1 flex flex-row max-w-[250px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-bl-[20px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px]">
         <h1 className="font-epilogue tracking-wider flex font-bold text-[#1dc071] m-auto text-[26px] items-center">
           MediChain
-        </h1>{" "}
+        </h1>
         {/* <input
           type="text"
           placeholder="Search for campaigns"

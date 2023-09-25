@@ -42,23 +42,23 @@ const SearchReport = () => {
         Search For Reports
       </h1>
 
-      <div className="lg:flex-1 flex flex-row max-w-[435px] sm:max-w-[458px] py-2 pl-6 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px] my-[20px] max-sm:mx-auto">
+      <div className="lg:flex-1 flex flex-row max-w-[435px] sm:max-w-[458px] py-2 pl-4 sm:pl-6 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px] my-[20px] max-sm:mx-auto">
         <input
           type="text"
           placeholder="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
-          className="flex w-full font-epilogue font-normal text-[13.5px] sm:text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
+          className="flex w-full font-epilogue font-normal text-[11px] sm:text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
           value={inputValue}
           onChange={handleInputChange}
         />
 
         <div
-          className="w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer"
+          className="w-[65px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer"
           onClick={handleClick}
         >
           <img
             src={search}
             alt="search"
-            className="w-[15px] h-[15px] object-contain"
+            className="w-[13px] h-[13px] object-contain"
           />
         </div>
       </div>
