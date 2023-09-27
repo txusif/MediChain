@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context";
 
-import { CustomButton, FormField, Loader } from "../components";
+import {
+  CopyContent,
+  CustomButton,
+  FormField,
+  FormFieldCopy,
+  Loader,
+} from "../components";
 
 const tabsItems = ["Register as Doctor", "Register as Lab"];
 
@@ -75,7 +81,13 @@ const Register = () => {
             key={index}
             bg={openTab === index && true}
             name={item}
-            onSelect={() => setOpenTab(index)}
+            onSelect={() => {
+              setOpenTab(index);
+              setForm({
+                name: "",
+                id: "",
+              });
+            }}
           />
         ))}
       </ul>
@@ -104,14 +116,16 @@ const Register = () => {
             smallerFont="text-[13px]"
           />
 
-          <FormField
+          <FormFieldCopy
             labelName="Address *"
             placeholder="Your wallet address"
             inputType="text"
             value={address}
             isDisabled
             smallerFont="text-[11.5px]"
+            textToCopy={address}
           />
+          {/* <CopyContent textToCopy={address} /> */}
 
           <FormField
             labelName="Unique Id *"
