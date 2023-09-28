@@ -57,6 +57,7 @@ const FundCard = ({
               Raised of {target} MATIC
             </p>
           </div>
+          
           <div className="flex flex-col">
             <h4 className="font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
               {remainingDays}

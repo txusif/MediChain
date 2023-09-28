@@ -7,6 +7,7 @@ import {
   FormField,
   Loader,
   FileUploadComponent,
+  CopyContent,
 } from "../components";
 
 import { uploadReports } from "../assets";
@@ -106,6 +107,7 @@ const UploadReports = () => {
             }}
             smallerFont="text-[11.5px]"
           />
+
           <FormField
             labelName="Category *"
             placeholder="Blood Report"
