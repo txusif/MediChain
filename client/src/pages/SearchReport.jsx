@@ -45,7 +45,7 @@ const SearchReport = () => {
       <div className="lg:flex-1 flex flex-row max-w-[435px] sm:max-w-[458px] py-2 pl-4 sm:pl-6 pr-2 h-[52px] bg-[#1c1c24] rounded-[100px] my-[20px] max-sm:mx-auto">
         <input
           type="text"
-          placeholder="0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+          placeholder="0xA9c3Cd96e58dB0BB67B10D5917209F40B6ff54E5"
           className="flex w-full font-epilogue font-normal text-[11px] sm:text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
           value={inputValue}
           onChange={handleInputChange}

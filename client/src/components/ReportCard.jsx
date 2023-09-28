@@ -1,8 +1,8 @@
 import React from "react";
 
 import { uploadDate } from "../utils";
-import { docImage, thirdweb } from "../assets";
-import { CustomButton } from "../components";
+import { docImage } from "../assets";
+import CopyContent from "./CopyContent";
 
 const ReportCard = ({
   age,
@@ -18,7 +18,6 @@ const ReportCard = ({
 }) => {
   const fileURI = `https://gateway.pinata.cloud/ipfs/`;
   const addDate = uploadDate(date);
-  // console.log(addDate);
 
   return (
     <div className="m-auto sm:m-0 sm:w-[230px] w-[250px] rounded-[15px] bg-[#1c1c24]">
@@ -37,10 +36,16 @@ const ReportCard = ({
           <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
             Added By
           </p>
-          <p className="flex-1 font-epilogue font-normal text-[13px] sm:text-[12px] text-[#b2b3bd] truncate">
-            {/* {lab} */}
-            {lab.slice(0, 12)}...{lab.slice(30)}
-          </p>
+
+          <div className="flex items-center justify-center">
+            <p className="flex-1 font-epilogue font-normal text-[14px] text-[#b2b3bd] truncate items-center justify-center">
+              {lab.slice(0, 10)}...{lab.slice(33)}
+            </p>
+
+            <div className="flex items-center justify-center max-sm:mr-[9px] pb-[5px]">
+              <CopyContent textToBeCopied={lab} />
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-row">
