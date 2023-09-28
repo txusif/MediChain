@@ -82,7 +82,7 @@ const CampaignDetails = () => {
             </h4>
 
             <div className="mt-[30px] flex flex-row items-center flex-wrap gap-[14px]">
-              <div className="sm:w-[52px] sm:h-[52px] w-[48px] h-[48px] flex flex-row items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
+              <div className="sm:w-[52px] sm:h-[52px] w-[40px] h-[40px] flex flex-row items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
                 <img
                   src={thirdweb}
                   alt="user"
@@ -91,13 +91,13 @@ const CampaignDetails = () => {
               </div>
 
               <div>
-                <div className="flex flex-row gap-[10px]">
-                  <h4 className="font-epilogue font-semibold leading-7 text-white text-[11.5px] sm:text-[14px] break-all">
+                <div className="flex flex-row gap-[5px]">
+                  <h4 className="font-epilogue font-semibold leading-7 text-white text-[10.5px] sm:text-[14px] break-all">
                     {state.owner}
                   </h4>
                   <CopyContent textToBeCopied={state.owner} />
                 </div>
-                <p className="mt-[4px] font-epilogue font-normal text-[#808191] text-[12px]">
+                <p className="mt-[3px] font-epilogue font-normal text-[#808191] text-[12px]">
                   10 Campaigns
                 </p>
               </div>
@@ -126,14 +126,14 @@ const CampaignDetails = () => {
                     key={`${item.donator}-${index}`}
                     className="flex justify-between items-center gap-4"
                   >
-                    <div className="flex flex-row gap-[10px]">
-                      <p className="font-epilogue font-normal text-[11.5px] sm:text-[16px] text-[#b2b3bd] leading-[30px] break-all">
+                    <div className="flex flex-row gap-[5px]">
+                      <p className="font-epilogue font-normal text-[10px] sm:text-[16px] text-[#b2b3bd] leading-[30px] break-all">
                         {index + 1}. {item.donator}
                       </p>
-                      <CopyContent textToBeCopied={state.owner} />
+                      <CopyContent textToBeCopied={item.donator} />
                     </div>
 
-                    <p className="font-epilogue font-normal text-[11.5px] sm:text-[16px] text-[#808191] leading-[26px] break-all">
+                    <p className="font-epilogue font-normal text-[10px] sm:text-[16px] text-[#808191] leading-[26px] break-all">
                       {item.donation} MATIC
                     </p>
                   </div>
