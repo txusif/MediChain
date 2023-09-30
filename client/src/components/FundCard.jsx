@@ -18,7 +18,7 @@ const FundCard = ({
 
   return (
     <div
-      className="sm:w-[288px] w-full rounded-[15px] bg-[#1c1c24] cursor-pointer"
+      className="max-sm:m-auto w-[288px] rounded-[15px] bg-[#1c1c24] cursor-pointer"
       onClick={handleClick}
     >
       {/* <img
@@ -26,7 +26,7 @@ const FundCard = ({
         alt="fund"
         className="w-full h-[158px] object-cover rounded-[15px]"
       /> */}
-      <div className="sm:w-[257px] w-[220px] sm:h-[257px] h-[220px] rounded-t-[10px] mx-4 mt-4 flex justify-center items-center bg-[#13131a]">
+      <div className="w-[257px] h-[257px] rounded-t-[10px] mx-4 mt-4 flex justify-center items-center bg-[#13131a]">
         <img
           src={image}
           alt="fund"

@@ -11,14 +11,15 @@ const Campaigns = () => {
   const fetchCampaigns = async () => {
     setIsLoading(true);
     const data = await getCampaigns();
-    console.log(data);
-    setCampaigns(data);
+    const dataOrdered = data.reverse();
+    setCampaigns(dataOrdered);
+    console.log(dataOrdered);
     setIsLoading(false);
   };
 
   // console.log(daysLeft(campaigns[0].deadline));
   const validCampaigns = campaigns.filter(
-    (campaign) => daysLeft(campaign.deadline) >= 0
+    (campaign) => daysLeft(campaign.deadline) >= 1
   );
   // console.log(validCampaigns);
 
