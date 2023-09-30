@@ -162,6 +162,7 @@ const CampaignDetails = () => {
                 step="1"
                 className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-white rounded-[10px] text-[18px] leading-[30px] placeholder:text-[#4b5264]"
                 value={amount}
+                max={state.target - state.amountCollected}
                 onChange={(e) => setAmount(e.target.value)}
               />
               {/* <div className="my-[20px] p-4 bg-[#13131a] rounded-[10px]">
@@ -179,7 +180,11 @@ const CampaignDetails = () => {
                 title="Fund the campaign"
                 styles="w-full bg-[#8c6dfd] mt-[20px] mb-[8px]"
                 handleClick={handleDonate}
-                isConnected={address && address !== state.owner}
+                isConnected={
+                  address &&
+                  address !== state.owner &&
+                  amount <= state.target - state.amountCollected
+                }
               />
             </div>
           </div>
