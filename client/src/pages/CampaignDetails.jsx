@@ -98,7 +98,7 @@ const CampaignDetails = () => {
                   <CopyContent textToBeCopied={state.owner} />
                 </div>
                 <p className="mt-[3px] font-epilogue font-normal text-[#808191] text-[12px]">
-                  10 Campaigns
+                  2 Campaigns
                 </p>
               </div>
             </div>
