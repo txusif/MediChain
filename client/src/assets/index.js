@@ -19,6 +19,10 @@ import uploadReports from "./upload-reports.svg";
 import searchReport from "./search-report.svg";
 import thirdweb from "./thirdweb.png";
 import docImage from "./docImage.png";
+import ewallet from "./ewallet.svg";
+import peoplesStanding from "./peoplesStanding.svg";
+import storingDocument from "./storingDocument.svg";
+import vault from "./vault.svg";
 
 export {
   tagType,
@@ -41,4 +45,8 @@ export {
   reports,
   uploadReports,
   searchReport,
+  ewallet,
+  peoplesStanding,
+  vault,
+  storingDocument,
 };

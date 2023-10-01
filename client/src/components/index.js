@@ -13,3 +13,5 @@ export { default as Loader } from "./Loader";
 export { default as Icon } from "./Icon";
 export { default as FileUploadComponent } from "./FileUploadComponent";
 export { default as CopyContent } from "./CopyContent";
+export { default as Feature } from "./Feature";
+export { default as Socials } from "./Socials";

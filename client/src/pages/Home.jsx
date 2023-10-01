@@ -1,72 +1,45 @@
-import React, { useState, useEffect } from "react";
-import { useStateContext } from "../context";
+import React from "react";
+
+import { Feature, Socials } from "../components";
+import { features, socialLinks } from "../constants";
 
 const Home = () => {
-  // const {
-  //   address,
-  //   contract,
-  //   getUserReports,
-  //   getDetailedReport,
-  //   getDoctors,
-  //   getLabs,
-  //   isDoctor,
-  //   isLab,
-  //   getAuthorisedDetails,
-  // } = useStateContext();
-
-  // const [doctors, setDoctors] = useState([]);
-  // const [labs, setLabs] = useState([]);
-
-  // const fetch = async () => {
-  //   // // Fetching all reports of an user
-  //   // const report = await getUserReports(address);
-  //   // console.log(report);
-  //   // // Fetching a sigle detaled report of an user
-  //   // const detailedReport = await getDetailedReport(report[0]);
-  //   // console.log(detailedReport);
-  //   // // Formating Report upload date
-  //   // function formatDate(date) {
-  //   //   const options = {
-  //   //     hour: "2-digit",
-  //   //     minute: "2-digit",
-  //   //     day: "numeric",
-  //   //     month: "long",
-  //   //     year: "numeric",
-  //   //   };
-  //   //   return date.toLocaleString("en-US", options);
-  //   // }
-  //   // const formattedDate = formatDate(new Date(detailedReport.date * 1000));
-  //   // console.log(formattedDate);
-  //   // // Fetching the list of Doctors
-  //   const doctorss = await getDoctors();
-  //   setDoctors(doctorss);
-  //   // // doctors.map((doctor) => console.log(doctor));
-  //   console.log("Doctors :");
-  //   // console.log(doctors);
-  //   // // Fetching the list of Labs
-  //   const labss = await getLabs();
-  //   setLabs(labss);
-  //   // // labs.map((lab) => console.log(lab));
-  //   console.log("Labs :");
-  //   // console.log(labss);
-  //   // // Check if the user is Doctor
-  //   // const isAuthorisedDoctor = await isDoctor(address);
-  //   // console.log("Doctor: " + isAuthorisedDoctor);
-  //   // // Check if the user is Lab
-  //   // const isAuthorisedLab = await isLab(address);
-  //   // console.log("Lab: " + isAuthorisedLab);
-  //   // Fetching doctors and labs details
-  //   // const authorisedDetails = await getAuthorisedDetails(address);
-  //   // console.log(authorisedDetails);
-  // };
-
-  // useEffect(() => {
-  //   if (contract) fetch();
-  // }, [address, contract]);
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
-    <div className="font-epilogue font-semibold text-[16px] text-white">
-      Home Page
+    <div className="bg-[#1c1c24] flex flex-col justify-center items-center rounded-[10px]">
+      <div className="font-epilogue font-semibold text-center ">
+        <h1 className="sm:text-6xl text-3xl text-white sm:mt-[60px] mt-[50px] tracking-wider uppercase">
+          MediChain
+        </h1>
+        <p className="sm:text-xl text-xs text-[#818183] tracking-wider ">
+          Your Gateway to Secure Healthcare Solutions.
+        </p>
+      </div>
+
+      {features.map((feature, index) => (
+        <Feature
+          key={index}
+          title={feature.title}
+          imgUrl={feature.imgUrl}
+          altTag={feature.altTag}
+          description={feature.description}
+          buttonTitle={feature.buttonTitle}
+          link={feature.link}
+        />
+      ))}
+
+      <footer className="mt-[50px]">
+        <div className="flex flex-row justify-center gap-5 ">
+          {socialLinks.map((social, index) => (
+            <Socials key={index} icon={social.icon} link={social.link} />
+          ))}
+        </div>
+        <p className="font-epilogue font-normal max-sm:text-sm text-[#818183] mt-[12px] mb-[15px]">
+          &copy; {year} | txusif | All Rights Reserved
+        </p>
+      </footer>
     </div>
   );
 };

@@ -108,7 +108,7 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="flex mx-4">
+          <div id="metamask" className="flex mx-4">
             <ConnectMetamask />
           </div>
         </div>

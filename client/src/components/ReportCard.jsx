@@ -62,7 +62,7 @@ const ReportCard = ({
             <a
               href={fileURI + fileHash}
               target="_blank"
-              className="flex justify-center items-center font-epilogue font-semibold text-[16px] leading-[26px] text-white min-h-[35px] px-6 rounded-[6px] bg-[#1dc071]"
+              className="flex justify-center items-center font-epilogue font-semibold text-[16px] leading-[26px] text-white min-h-[35px] px-6 rounded-[6px] outline-none focus:ring ring-offset-2 focus:ring-[#1dc071] bg-[#1dc071]"
             >
               View
             </a>
