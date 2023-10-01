@@ -6,7 +6,7 @@ const Socials = ({ link, icon }) => {
     <a href={link} target="_blank">
       <FontAwesomeIcon
         icon={icon}
-        className="text-white text-[1.3rem] hover:text-[1.5rem]"
+        className="text-white max-sm:text-[1.1rem] hover:max-sm:text-[1.3rem] text-[1.3rem] hover:text-[1.5rem]"
       />
     </a>
   );
