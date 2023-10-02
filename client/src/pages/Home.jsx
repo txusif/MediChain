@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div className="bg-[#1c1c24] flex flex-col justify-center items-center rounded-[10px]">
-      <div className="font-epilogue font-semibold text-center ">
+      <div className="font-epilogue font-semibold text-center">
         <h1 className="sm:text-6xl text-3xl text-white sm:mt-[60px] mt-[50px] tracking-wider uppercase">
           MediChain
         </h1>

@@ -12,9 +12,9 @@ const Feature = ({ title, imgUrl, description, altTag, buttonTitle, link }) => {
       </h2>
 
       <div className="flex">
-        <div className="sm:h-[350px] sm:w-full w-[330px] bg-wite flex sm:flex-row flex-col items-center jsutify-center mx-[230px] sm:gap-4 gap-2">
+        <div className="sm:h-[350px] sm:w-full w-[330px] flex sm:flex-row flex-col items-center jsutify-center sm:mx-[230px] sm:gap-4 gap-2">
           <img src={imgUrl} alt={altTag} className="h-[80%] w-[80%]" />
-          <p className="sm:text-xl text-xs text-[#818183] max-sm:mx-auto tracking-wider max-sm:text-center text-left items-start ml-[20px] mr-[60px]">
+          <p className="sm:text-xl text-xs text-[#818183] max-sm:mx-auto tracking-wider max-sm:text-center max-sm:px-[20px] text-left items-start ml-[20px] mr-[60px]">
             {description}
 
             <CustomButton
