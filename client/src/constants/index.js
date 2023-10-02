@@ -106,7 +106,7 @@ export const features = [
 export const socialLinks = [
   {
     icon: faLinkedin,
-    link: "www.linkedin.com/in/txusif",
+    link: "https://www.linkedin.com/in/txusif",
   },
   {
     icon: faGithub,
