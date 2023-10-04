@@ -2,7 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
 
-const Feature = ({ title, imgUrl, description, altTag, buttonTitle, link }) => {
+const Feature = ({
+  title,
+  imgUrl,
+  description,
+  altTag,
+  buttonTitle,
+  link,
+  name,
+  setIsActive,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +31,7 @@ const Feature = ({ title, imgUrl, description, altTag, buttonTitle, link }) => {
               title={buttonTitle}
               styles="block w-auto bg-[#1dc071] mt-[15px] outline-none max-sm:mx-auto"
               handleClick={() => {
-                // setIsActive(link.name);
+                setIsActive(name);
                 navigate(link);
               }}
               isConnected={true}

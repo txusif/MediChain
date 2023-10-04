@@ -163,6 +163,7 @@ const CampaignDetails = () => {
                 className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-white rounded-[10px] text-[18px] leading-[30px] placeholder:text-[#4b5264]"
                 value={amount}
                 max={state.target - state.amountCollected}
+                min="0"
                 onChange={(e) => setAmount(e.target.value)}
               />
               {/* <div className="my-[20px] p-4 bg-[#13131a] rounded-[10px]">

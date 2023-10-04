@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { logo, sun, moon } from "../assets";
+import { logo } from "../assets";
 import { navlinks } from "../constants";
 import { Icon } from "../components";
 
-const Sidebar = () => {
+const Sidebar = ({ isActive, setIsActive }) => {
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState("Home");
-  const [isDark, setIsDark] = useState(true);
+  // const [isActive, setIsActive] = useState("Home");
+  // const [isDark, setIsDark] = useState(true);
 
   return (
     <div className="flex justify-between items-center flex-col sticky top-5 h-[91vh]">
@@ -38,14 +38,6 @@ const Sidebar = () => {
             />
           ))}
         </div>
-
-        {/* <Icon
-          styles="bg-[#1c1c24] shadow-secondary"
-          imgUrl={isDark ? sun : moon}
-          handleClick={() => {
-            setIsDark((prev) => !prev);
-          }}
-        /> */}
       </div>
     </div>
   );
