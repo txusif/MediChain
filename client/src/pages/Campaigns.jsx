@@ -35,8 +35,8 @@ const Campaigns = ({ setIsActive }) => {
       <DisplayCampaigns
         title="All Campaigns"
         isLoading={isLoading}
-        campaigns={campaigns}
-        // campaigns={validCampaigns}
+        // campaigns={campaigns}
+        campaigns={validCampaigns}
       />
     </div>
   );
