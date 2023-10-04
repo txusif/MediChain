@@ -27,8 +27,6 @@ const Home = ({isActive, setIsActive}) => {
           description={feature.description}
           buttonTitle={feature.buttonTitle}
           link={feature.link}
-          name={feature.name}
-          setIsActive={setIsActive}
         />
       ))}
 

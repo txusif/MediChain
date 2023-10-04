@@ -9,8 +9,6 @@ const Feature = ({
   altTag,
   buttonTitle,
   link,
-  name,
-  setIsActive,
 }) => {
   const navigate = useNavigate();
 
@@ -31,7 +29,6 @@ const Feature = ({
               title={buttonTitle}
               styles="block w-auto bg-[#1dc071] mt-[15px] outline-none max-sm:mx-auto"
               handleClick={() => {
-                setIsActive(name);
                 navigate(link);
               }}
               isConnected={true}

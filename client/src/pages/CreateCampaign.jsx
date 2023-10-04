@@ -7,7 +7,8 @@ import { money } from "../assets";
 import { CustomButton, FormField, Loader } from "../components";
 import { checkIfImage } from "../utils";
 
-const CreateCampaign = () => {
+const CreateCampaign = ({ setIsActive }) => {
+  setIsActive("Create Campaign");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { address, createCampaign } = useStateContext();

@@ -27,7 +27,8 @@ const TabsComponent = ({ name, onSelect, bg }) => {
   );
 };
 
-const Register = () => {
+const Register = ({ setIsActive }) => {
+  setIsActive("Register");
   const { address, contract, register, isDoctor, isLab } = useStateContext();
 
   const navigate = useNavigate();

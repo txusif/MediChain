@@ -3,7 +3,8 @@ import { useStateContext } from "../context";
 import { DisplayReports } from "../components";
 import { search } from "../assets";
 
-const SearchReport = () => {
+const SearchReport = ({ setIsActive }) => {
+  setIsActive("Search Report");
   const [isLoading, setIsLoading] = useState(false);
   const { address, contract, getUserReports, getDetailedReport } =
     useStateContext();

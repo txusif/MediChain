@@ -32,14 +32,35 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home setIsActive={handleActive} />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/upload-reports" element={<UploadReports />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/search-report" element={<SearchReport />} />
-          <Route path="/create-campaign" element={<CreateCampaign />} />
-          <Route path="/campaigns" element={<Campaigns />} />
+          <Route
+            path="/register"
+            element={<Register setIsActive={handleActive} />}
+          />
+          <Route
+            path="/upload-reports"
+            element={<UploadReports setIsActive={handleActive} />}
+          />
+          <Route
+            path="/reports"
+            element={<Reports setIsActive={handleActive} />}
+          />
+          <Route
+            path="/search-report"
+            element={<SearchReport setIsActive={handleActive} />}
+          />
+          <Route
+            path="/create-campaign"
+            element={<CreateCampaign setIsActive={handleActive} />}
+          />
+          <Route
+            path="/campaigns"
+            element={<Campaigns setIsActive={handleActive} />}
+          />
           <Route path="/campaign-details/:id" element={<CampaignDetails />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={<Profile setIsActive={handleActive} />}
+          />
         </Routes>
       </div>
     </div>

@@ -3,7 +3,8 @@ import { useStateContext } from "../context";
 import { DisplayCampaigns } from "../components";
 import { daysLeft } from "../utils";
 
-const Campaigns = () => {
+const Campaigns = ({ setIsActive }) => {
+  setIsActive("Campaigns");
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
   const { address, contract, getCampaigns } = useStateContext();

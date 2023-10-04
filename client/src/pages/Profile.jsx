@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
 import { DisplayCampaigns } from "../components";
 
-const Profile = () => {
+const Profile = ({ setIsActive }) => {
+  setIsActive("Profile");
   const [isLoading, setIsLoading] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
   const { address, contract, getUserCampaigns } = useStateContext();

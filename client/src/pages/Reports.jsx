@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
 import { CustomButton, DisplayReports } from "../components";
 
-const Reports = () => {
+const Reports = ({ setIsActive }) => {
+  setIsActive("Reports");
   const [isLoading, setIsLoading] = useState(false);
   const { address, contract, getUserReports, getDetailedReport } =
     useStateContext();

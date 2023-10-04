@@ -73,7 +73,6 @@ export const features = [
       "At 'MediChain,' we prioritize the security and privacy of your medical records. Our blockchain technology ensures that your health data remains safe from unauthorized access and tampering.",
     buttonTitle: "Try it",
     link: "/reports",
-    name: "Reports",
   },
   {
     title: "IPFS Integration",
@@ -83,7 +82,6 @@ export const features = [
       "Our partnership with IPFS, powered by Pinata, offers decentralized and secure storage for your critical medical files. Rest assured, your healthcare data is in trustworthy hands.",
     buttonTitle: "Checkout",
     link: "/search-report",
-    name: "Search Report",
   },
   {
     title: "Blockchain Connectivity",
@@ -92,8 +90,7 @@ export const features = [
     description:
       "Seamlessly interact with the Ethereum blockchain through Metamask Wallet. You have complete control over your data, with transparency and trust at the core of our Dapp.",
     buttonTitle: "Connect Wallet",
-    link: "connectMetamask",
-    name: "Home",
+    link: "/",
   },
   {
     title: "Crowdfunding Mechanism",
@@ -103,7 +100,6 @@ export const features = [
       "We empower patients to create campaigns and seek financial support from a global community. 'MediChain' bridges the gap between healthcare seekers and compassionate contributors.",
     buttonTitle: "Create a campaign",
     link: "/create-campaign",
-    name: "Campaigns",
   },
 ];
 

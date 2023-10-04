@@ -12,7 +12,8 @@ import {
 
 import { uploadReports } from "../assets";
 
-const UploadReports = () => {
+const UploadReports = ({ setIsActive }) => {
+  setIsActive("Upload Reports");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { address, saveReport } = useStateContext();
