@@ -3,7 +3,8 @@ import React from "react";
 import { Feature, Socials } from "../components";
 import { features, socialLinks } from "../constants";
 
-const Home = ({isActive, setIsActive}) => {
+const Home = ({ setIsActive }) => {
+  setIsActive("Home");
   const date = new Date();
   const year = date.getFullYear();
 

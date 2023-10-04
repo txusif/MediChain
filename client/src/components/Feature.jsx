@@ -1,16 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CustomButton } from "../components";
+import { useStateContext } from "../context";
 
-const Feature = ({
-  title,
-  imgUrl,
-  description,
-  altTag,
-  buttonTitle,
-  link,
-}) => {
+const Feature = ({ title, imgUrl, description, altTag, buttonTitle, link }) => {
   const navigate = useNavigate();
+  const { connect } = useStateContext();
 
   return (
     <div className="font-epilogue font-semibold">
@@ -28,8 +23,13 @@ const Feature = ({
               btnType="button"
               title={buttonTitle}
               styles="block w-auto bg-[#1dc071] mt-[15px] outline-none max-sm:mx-auto"
-              handleClick={() => {
-                navigate(link);
+              handleClick={async () => {
+                if (link === "/") {
+                  await connect();
+                  navigate("/reports");
+                } else {
+                  navigate(link);
+                }
               }}
               isConnected={true}
             />
