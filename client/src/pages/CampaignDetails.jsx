@@ -98,7 +98,7 @@ const CampaignDetails = () => {
 
               <div>
                 <div className="flex flex-row gap-[5px]">
-                  <h4 className="font-epilogue font-semibold leading-7 text-white text-[10.5px] sm:text-[14px] break-all">
+                  <h4 className="font-epilogue font-semibold leading-7 text-white text-[11px] sm:text-[14px] break-all">
                     {state.owner}
                   </h4>
                   <CopyContent textToBeCopied={state.owner} />
