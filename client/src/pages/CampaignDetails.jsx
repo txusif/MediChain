@@ -135,13 +135,13 @@ const CampaignDetails = () => {
                     className="flex max-sm:flex-col justify-between sm:items-center sm:gap-4"
                   >
                     <div className="flex flex-row gap-[5px]">
-                      <p className="font-epilogue font-normal text-[14px] sm:text-[16px] text-[#b2b3bd] leading-[30px] break-all">
+                      <p className="font-epilogue font-normal text-[13px] sm:text-[16px] text-[#b2b3bd] leading-[30px] break-all">
                         {index + 1}. {item.donator}
                       </p>
                       <CopyContent textToBeCopied={item.donator} />
                     </div>
 
-                    <p className="font-epilogue font-normal text-[14px] sm:text-[16px] text-[#808191] leading-[26px] break-all max-sm:ml-[13px]">
+                    <p className="font-epilogue font-normal text-[13px] sm:text-[16px] text-[#808191] leading-[26px] break-all max-sm:ml-[13px]">
                       {item.donation} MATIC
                     </p>
                   </div>
