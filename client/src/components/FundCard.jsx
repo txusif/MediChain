@@ -75,7 +75,9 @@ const FundCard = ({
             >
               {amountCollected === target ? "Funds Raised" : amountCollected}
             </h4>
-            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
+            <p className={`mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate ${
+                amountCollected === target ? "text-white" : "text-[#b2b3bd]"
+              }`}>
               {amountCollected === target
                 ? "Thank You"
                 : `Raised of ${target} MATIC`}
@@ -84,10 +86,18 @@ const FundCard = ({
           </div>
 
           <div className="flex flex-col">
-            <h4 className="font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
+            <h4
+              className={`font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px] ${
+                remainingDays < 0 && "text-white"
+              }`}
+            >
               {remainingDays < 0 ? "Ended On" : remainingDays}
             </h4>
-            <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
+            <p
+              className={`mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate ${
+                remainingDays < 0 && "text-white"
+              }`}
+            >
               {remainingDays < 0 ? endDate : "Days Left"}
             </p>
           </div>

@@ -11,6 +11,9 @@ const Profile = ({ setIsActive }) => {
   const fetchCampaigns = async () => {
     setIsLoading(true);
     const data = await getUserCampaigns(address);
+    const dataOrdered = data.reverse();
+    setCampaigns(dataOrdered);
+    console.log(dataOrdered);
     setCampaigns(data);
     setIsLoading(false);
   };
