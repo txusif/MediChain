@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ethers } from "ethers";
 
 import { useStateContext } from "../context";
 import { CustomButton, CountBox, Loader, CopyContent } from "../components";
-import { calculateBarPercentage, daysLeft } from "../utils";
-import { campaigns, thirdweb, loader } from "../assets";
+import { calculateBarPercentage, daysLeft, CampaignEndDate } from "../utils";
+import { thirdweb } from "../assets";
 
 const CampaignDetails = () => {
   const { state } = useLocation();
@@ -17,6 +16,7 @@ const CampaignDetails = () => {
   const [donators, setDonators] = useState([]);
   const [noOfCampaigns, setNoOfCampaigns] = useState(0);
   const remainingDays = daysLeft(state.deadline);
+  const endDate = CampaignEndDate(state.deadline);
 
   const fetchDonators = async () => {
     // setIsLoading(true);
@@ -40,6 +40,8 @@ const CampaignDetails = () => {
       setIsLoading(false);
     }
   };
+
+  const funded = state.amountCollected === state.target;
 
   return (
     <div>
@@ -71,7 +73,11 @@ const CampaignDetails = () => {
         </div>
 
         <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
-          <CountBox title="Days Left" value={remainingDays} />
+          <CountBox
+            title={remainingDays < 0 ? endDate : "Days Left"}
+            value={remainingDays < 0 ? "Ended On" : remainingDays}
+            daysLeft={remainingDays}
+          />
           <CountBox
             title={`Raised of ${state.target}`}
             value={state.amountCollected}

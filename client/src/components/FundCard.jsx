@@ -1,8 +1,7 @@
 import React from "react";
 
 import { thirdweb } from "../assets";
-import { daysLeft } from "../utils";
-import { CampaignEndDate } from "../utils";
+import { daysLeft, CampaignEndDate } from "../utils";
 
 const FundCard = ({
   owner,
@@ -21,7 +20,16 @@ const FundCard = ({
 
   return (
     <div
-      className="max-sm:m-auto w-[288px] rounded-[15px] bg-[#1c1c24] cursor-pointer"
+      className={`max-sm:m-auto w-[288px] rounded-[15px] cursor-pointer ${
+        amountCollected === target ? "bg-[#395144]" : "bg-[#1c1c24]"
+      }
+      ${
+        remainingDays < 0 && amountCollected !== target
+          ? "bg-[#A73121]"
+          : "bg-[#1c1c24]"
+      }
+      
+      `}
       onClick={handleClick}
     >
       {/* <img
@@ -60,11 +68,18 @@ const FundCard = ({
 
         <div className="flex justify-between flex-wrap mt-[15px] gap-2">
           <div className="flex flex-col">
-            <h4 className="font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
-              {amountCollected}
+            <h4
+              className={`font-epilogue font-semibold text-[14px] leading-[22px] ${
+                amountCollected === target ? "text-white" : "text-[#b2b3bd]"
+              }`}
+            >
+              {amountCollected === target ? "Funds Raised" : amountCollected}
             </h4>
             <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
-              Raised of {target} MATIC
+              {amountCollected === target
+                ? "Thank You"
+                : `Raised of ${target} MATIC`}
+              {/* Raised of {target} MATIC */}
             </p>
           </div>
 
