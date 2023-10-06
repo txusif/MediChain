@@ -1,6 +1,6 @@
 import React from "react";
 
-import { uploadDate } from "../utils";
+import { ReportUploadDate } from "../utils";
 import { docImage } from "../assets";
 import CopyContent from "./CopyContent";
 
@@ -17,7 +17,8 @@ const ReportCard = ({
   weight,
 }) => {
   const fileURI = `https://gateway.pinata.cloud/ipfs/`;
-  const addDate = uploadDate(date);
+  const addDate = ReportUploadDate(date);
+  console.log(addDate);
 
   return (
     <div className="m-auto sm:m-0 sm:w-[230px] w-[250px] rounded-[15px] bg-[#1c1c24]">

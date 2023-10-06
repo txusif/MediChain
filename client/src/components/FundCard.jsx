@@ -2,6 +2,7 @@ import React from "react";
 
 import { thirdweb } from "../assets";
 import { daysLeft } from "../utils";
+import { CampaignEndDate } from "../utils";
 
 const FundCard = ({
   owner,
@@ -15,6 +16,8 @@ const FundCard = ({
   handleClick,
 }) => {
   const remainingDays = daysLeft(deadline);
+
+  const endDate = CampaignEndDate(deadline);
 
   return (
     <div
@@ -67,10 +70,10 @@ const FundCard = ({
 
           <div className="flex flex-col">
             <h4 className="font-epilogue font-semibold text-[14px] text-[#b2b3bd] leading-[22px]">
-              {remainingDays}
+              {remainingDays < 0 ? "Ended On" : remainingDays}
             </h4>
             <p className="mt-[3px] font-epilogue font-normal text-[12px] leading-[18px] text-[#808191] sm:max-w-[120px] truncate">
-              Days Left
+              {remainingDays < 0 ? endDate : "Days Left"}
             </p>
           </div>
         </div>
