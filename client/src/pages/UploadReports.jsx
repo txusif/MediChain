@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context";
+import toast from "react-hot-toast";
 
 import {
   CustomButton,
   FormField,
   Loader,
   FileUploadComponent,
-  CopyContent,
 } from "../components";
 
 import { uploadReports } from "../assets";
+
+const notify = () => toast.error("Permission Denied");
 
 const UploadReports = ({ setIsActive }) => {
   setIsActive("Upload Reports");
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { address, saveReport } = useStateContext();
+  const [isAuthorisedLab, setIsAuthorisedLab] = useState(false);
+  const { address, saveReport, contract, isLab } = useStateContext();
 
   const [contentId, setContentId] = useState("");
   const [fileURI, setFileURI] = useState("");
@@ -44,6 +47,16 @@ const UploadReports = ({ setIsActive }) => {
       bloodGroup: form.bloodGroup,
     },
   };
+
+  const fetch = async () => {
+    const isAuthLab = await isLab(address);
+    setIsAuthorisedLab(isAuthLab);
+    console.log("Lab: " + isAuthLab);
+  };
+
+  useEffect(() => {
+    if (contract) fetch();
+  }, [address, contract]);
 
   const handleForFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value });
@@ -85,6 +98,8 @@ const UploadReports = ({ setIsActive }) => {
             setContentId={setContentId}
             fileURI={fileURI}
             setFileURI={setFileURI}
+            isLab={isAuthorisedLab}
+            notify={notify}
           />
         </div>
 
@@ -179,10 +194,11 @@ const UploadReports = ({ setIsActive }) => {
 
         <div className="flex justify-center items-center mt-[10px]">
           <CustomButton
-            btnType="submit"
+            btnType={isAuthorisedLab ? "submit" : "button"}
             title="Upload Report"
             styles="bg-[#1dc071]"
             isConnected={address}
+            handleClick={isAuthorisedLab ? " " : notify}
           />
         </div>
 

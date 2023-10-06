@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { CustomButton } from "../components";
 
 const FileUploadComponent = ({
   address,
@@ -8,6 +7,8 @@ const FileUploadComponent = ({
   setContentId,
   fileURI,
   setFileURI,
+  isLab,
+  notify,
 }) => {
   // const { address } = useStateContext();
 
@@ -22,6 +23,7 @@ const FileUploadComponent = ({
   };
 
   const handleUpload = async () => {
+    console.log("a", isLab);
     try {
       console.log("Clicked");
       const formData = new FormData();
@@ -64,17 +66,10 @@ const FileUploadComponent = ({
           className="font-epilogue font-semibold items-center justify-center w- text-white rounded-l-[10px] h-[29px] cursor-pointer"
         />
         <div className="h-6 flex">
-          {/* <CustomButton
-            btnType="button"
-            title="Upload"
-            styles="flex items-center justify center bg-[#1dc071] text-[12px]"
-            handleClick={handleUpload}
-            isConnected={address && file}
-          /> */}
           <button
             type="button"
             className="bg-[#1dc071] text-white p-4 flex justify-center  items-center font-epilogue font-semibold rounded-[10px]"
-            onClick={handleUpload}
+            onClick={isLab ? handleUpload : notify}
             disabled={!(address && file)}
           >
             Upload

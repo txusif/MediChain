@@ -5,7 +5,7 @@ import { ethers } from "ethers";
 import { useStateContext } from "../context";
 import { CustomButton, CountBox, Loader, CopyContent } from "../components";
 import { calculateBarPercentage, daysLeft } from "../utils";
-import { campaigns, thirdweb } from "../assets";
+import { campaigns, thirdweb, loader } from "../assets";
 
 const CampaignDetails = () => {
   const { state } = useLocation();
@@ -19,10 +19,12 @@ const CampaignDetails = () => {
   const remainingDays = daysLeft(state.deadline);
 
   const fetchDonators = async () => {
+    // setIsLoading(true);
     const allCampaigns = await getUserCampaigns(state.owner);
     setNoOfCampaigns(allCampaigns.length);
     const data = await getDonations(state.pId);
     setDonators(data);
+    // setIsLoading(false);
   };
 
   useEffect(() => {
@@ -130,16 +132,16 @@ const CampaignDetails = () => {
                 donators.map((item, index) => (
                   <div
                     key={`${item.donator}-${index}`}
-                    className="flex justify-between items-center gap-4"
+                    className="flex max-sm:flex-col justify-between sm:items-center sm:gap-4"
                   >
                     <div className="flex flex-row gap-[5px]">
-                      <p className="font-epilogue font-normal text-[10px] sm:text-[16px] text-[#b2b3bd] leading-[30px] break-all">
+                      <p className="font-epilogue font-normal text-[14px] sm:text-[16px] text-[#b2b3bd] leading-[30px] break-all">
                         {index + 1}. {item.donator}
                       </p>
                       <CopyContent textToBeCopied={item.donator} />
                     </div>
 
-                    <p className="font-epilogue font-normal text-[10px] sm:text-[16px] text-[#808191] leading-[26px] break-all">
+                    <p className="font-epilogue font-normal text-[14px] sm:text-[16px] text-[#808191] leading-[26px] break-all max-sm:ml-[13px]">
                       {item.donation} MATIC
                     </p>
                   </div>
@@ -162,37 +164,48 @@ const CampaignDetails = () => {
               Fund the campaign
             </p>
             <div className="mt-[30px]">
-              <input
-                type="number"
-                placeholder="10 MATIC"
-                step="1"
-                className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-white rounded-[10px] text-[18px] leading-[30px] placeholder:text-[#4b5264]"
-                value={amount}
-                max={state.target - state.amountCollected}
-                min="0"
-                onChange={(e) => setAmount(e.target.value)}
-              />
-              {/* <div className="my-[20px] p-4 bg-[#13131a] rounded-[10px]">
-                <h4 className="font-epilogue font-semibold text-[14px] leading-[22px] text-white">
-                  Back it because you believe in it.
-                </h4>
-                <p className="mt-[20px] font-epilogue font-normal leading-[22px] text-[#808191]">
-                  Support the project for no reward, just because it speaks to
-                  you .
-                </p>
-              </div> */}
+              {state.amountCollected === state.target && (
+                <>
+                  <CustomButton
+                    btnType="button"
+                    title="Fund Raised"
+                    styles="w-full bg-[#1dc071] mb-[8px] focus:ring-[#8c6dfd]"
+                    handleClick={handleDonate}
+                    isConnected={
+                      address &&
+                      address !== state.owner &&
+                      amount <= state.target - state.amountCollected
+                    }
+                  />
+                </>
+              )}
 
-              <CustomButton
-                btnType="button"
-                title="Fund the campaign"
-                styles="w-full bg-[#8c6dfd] mt-[20px] mb-[8px]"
-                handleClick={handleDonate}
-                isConnected={
-                  address &&
-                  address !== state.owner &&
-                  amount <= state.target - state.amountCollected
-                }
-              />
+              {state.amountCollected !== state.target && (
+                <>
+                  <input
+                    type="number"
+                    placeholder="10 MATIC"
+                    step="1"
+                    className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-white rounded-[10px] text-[18px] leading-[30px] placeholder:text-[#4b5264]"
+                    value={amount}
+                    max={state.target - state.amountCollected}
+                    min="0"
+                    onChange={(e) => setAmount(e.target.value)}
+                  />
+
+                  <CustomButton
+                    btnType="button"
+                    title={"Fund the campaign"}
+                    styles="w-full bg-[#8c6dfd] mt-[20px] mb-[8px] focus:ring-[#8c6dfd]"
+                    handleClick={handleDonate}
+                    isConnected={
+                      address &&
+                      address !== state.owner &&
+                      amount <= state.target - state.amountCollected
+                    }
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>

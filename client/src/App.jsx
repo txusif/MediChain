@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useStateContext } from "./context";
+import { Toaster } from "react-hot-toast";
 
 import { Navbar, Sidebar } from "./components";
 import {
@@ -27,7 +28,16 @@ function App() {
       <div className="sm:flex hidden mr-10 relative">
         <Sidebar isActive={isActive} setIsActive={handleActive} />
       </div>
-
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 2000,
+          style: {
+            background: "#1c1c24",
+            color: "#fff",
+          },
+        }}
+      />
       <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
         <Navbar />
         <Routes>
