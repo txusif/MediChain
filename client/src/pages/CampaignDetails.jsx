@@ -10,13 +10,17 @@ import { campaigns, thirdweb } from "../assets";
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, getDonations, address, contract } = useStateContext();
+  const { donate, getDonations, address, contract, getUserCampaigns } =
+    useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [donators, setDonators] = useState([]);
+  const [noOfCampaigns, setNoOfCampaigns] = useState(0);
   const remainingDays = daysLeft(state.deadline);
 
-  const fetchDonators = async (pId) => {
+  const fetchDonators = async () => {
+    const allCampaigns = await getUserCampaigns(state.owner);
+    setNoOfCampaigns(allCampaigns.length);
     const data = await getDonations(state.pId);
     setDonators(data);
   };
@@ -98,7 +102,9 @@ const CampaignDetails = () => {
                   <CopyContent textToBeCopied={state.owner} />
                 </div>
                 <p className="mt-[3px] font-epilogue font-normal text-[#808191] text-[12px]">
-                  2 Campaigns
+                  {noOfCampaigns <= 1
+                    ? `${noOfCampaigns} Campaign`
+                    : `${noOfCampaigns} Campaigns`}
                 </p>
               </div>
             </div>

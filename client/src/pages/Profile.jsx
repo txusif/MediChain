@@ -10,7 +10,7 @@ const Profile = ({ setIsActive }) => {
 
   const fetchCampaigns = async () => {
     setIsLoading(true);
-    const data = await getUserCampaigns();
+    const data = await getUserCampaigns(address);
     setCampaigns(data);
     setIsLoading(false);
   };
