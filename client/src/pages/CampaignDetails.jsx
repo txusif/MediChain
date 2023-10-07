@@ -124,7 +124,7 @@ const CampaignDetails = () => {
               Story
             </h4>
             <div className="mt-[20px]">
-              <p className="font-epilogue font-normal text-[#808191] text-[16px] leading-[26px] text-justify">
+              <p className="font-epilogue font-normal text-[#808191] text-[16px] leading-[26px] text-justify break-words">
                 {state.description}
               </p>
             </div>
