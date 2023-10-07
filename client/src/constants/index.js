@@ -98,8 +98,8 @@ export const features = [
     altTag: "crowdFunding",
     description:
       "We empower patients to create campaigns and seek financial support from a global community. 'MediChain' bridges the gap between healthcare seekers and compassionate contributors.",
-    buttonTitle: "Create a campaign",
-    link: "/create-campaign",
+    buttonTitle: "Campaign",
+    link: "/campaigns",
   },
 ];
 

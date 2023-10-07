@@ -167,7 +167,7 @@ const CampaignDetails = () => {
             Fund
           </h4>
 
-          <div className="block mt-1 sm:mr-[250px] mr-[290px]">
+          <div className="block mt-1 sm:mr-[250px] mr-[250px]">
             <a
               href={fileURI + state.fileHash}
               target="_blank"
@@ -189,11 +189,7 @@ const CampaignDetails = () => {
                     title="Fund Raised"
                     styles="w-full bg-[#1dc071] mb-[8px] focus:ring-[#8c6dfd]"
                     handleClick={handleDonate}
-                    isConnected={
-                      address &&
-                      address !== state.owner &&
-                      amount <= state.target - state.amountCollected
-                    }
+                    isConnected={false}
                   />
                 </>
               )}
