@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
 import { DisplayReports } from "../components";
 import { search } from "../assets";
+import toast from "react-hot-toast";
 
-const SearchReport = ({ setIsActive }) => {
+const SearchReport = ({ setIsActive, isAuthorisedLab, isAuthorisedDoctor }) => {
   setIsActive("Search Report");
   const [isLoading, setIsLoading] = useState(false);
   const { address, contract, getUserReports, getDetailedReport } =
@@ -19,17 +20,21 @@ const SearchReport = ({ setIsActive }) => {
   };
 
   const fetch = async () => {
-    setFetched(false);
-    setIsLoading(true);
+    if (isAuthorisedDoctor | isAuthorisedLab) {
+      setFetched(false);
+      setIsLoading(true);
 
-    const userReports = await getUserReports(inputValue);
-    for (let i = 0; i < userReports.length; i++) {
-      const detailedReport = await getDetailedReport(userReports[i]);
-      console.log(detailedReport);
-      setContentId((prev) => [...prev, detailedReport]);
+      const userReports = await getUserReports(inputValue);
+      for (let i = 0; i < userReports.length; i++) {
+        const detailedReport = await getDetailedReport(userReports[i]);
+        console.log(detailedReport);
+        setContentId((prev) => [...prev, detailedReport]);
+      }
+      setIsLoading(false);
+      setFetched(true);
+    } else {
+      toast.error("Permission denied");
     }
-    setIsLoading(false);
-    setFetched(true);
   };
 
   const handleClick = () => {

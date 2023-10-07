@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context";
 
 import {
-  CopyContent,
   CustomButton,
   FormField,
   FormFieldCopy,
@@ -28,15 +27,15 @@ const TabsComponent = ({ name, onSelect, bg }) => {
   );
 };
 
-const Register = ({ setIsActive }) => {
+const Register = ({ setIsActive, isAuthorisedDoctor,isAuthorisedLab }) => {
   setIsActive("Register");
-  const { address, contract, register, isDoctor, isLab } = useStateContext();
+const { address, contract, register, isDoctor, isLab } = useStateContext();
 
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [openTab, setOpenTab] = useState(0);
-  const [isAuthorisedDoctor, setIsAuthorisedDoctor] = useState(false);
-  const [isAuthorisedLab, setIsAuthorisedLab] = useState(false);
+  // const [isAuthorisedDoctor, setIsAuthorisedDoctor] = useState(false);
+  // const [isAuthorisedLab, setIsAuthorisedLab] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -60,19 +59,19 @@ const Register = ({ setIsActive }) => {
     navigate("/upload-reports");
   };
 
-  const fetch = async () => {
-    const isAuthDoctor = await isDoctor(address);
-    setIsAuthorisedDoctor(isAuthDoctor);
-    // console.log("Doctor: " + isAuthDoctor);
+  // const fetch = async () => {
+  //   const isAuthDoctor = await isDoctor(address);
+  //   setIsAuthorisedDoctor(isAuthDoctor);
+  //   // console.log("Doctor: " + isAuthDoctor);
 
-    const isAuthLab = await isLab(address);
-    setIsAuthorisedLab(isAuthLab);
-    // console.log("Lab: " + isAuthLab);
-  };
+  //   const isAuthLab = await isLab(address);
+  //   setIsAuthorisedLab(isAuthLab);
+  //   // console.log("Lab: " + isAuthLab);
+  // };
 
-  useEffect(() => {
-    if (contract) fetch();
-  }, [address, contract]);
+  // useEffect(() => {
+  //   if (contract) fetch();
+  // }, [address, contract]);
 
   return (
     <div className="bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4">

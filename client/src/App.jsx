@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useStateContext } from "./context";
 import { Toaster } from "react-hot-toast";
@@ -17,11 +17,28 @@ import {
 } from "./pages";
 
 function App() {
-  const { address, contract } = useStateContext();
+  const { address, contract, isDoctor, isLab } = useStateContext();
   const [isActive, setIsActive] = useState("Home");
+  const [isAuthorisedDoctor, setIsAuthorisedDoctor] = useState(false);
+  const [isAuthorisedLab, setIsAuthorisedLab] = useState(false);
+
   const handleActive = (page) => {
     setIsActive(page);
   };
+
+  const fetch = async () => {
+    const isAuthDoctor = await isDoctor(address);
+    setIsAuthorisedDoctor(isAuthDoctor);
+    console.log("Doctor: " + isAuthDoctor);
+
+    const isAuthLab = await isLab(address);
+    setIsAuthorisedLab(isAuthLab);
+    console.log("Lab: " + isAuthLab);
+  };
+
+  useEffect(() => {
+    if (contract) fetch();
+  }, [address, contract]);
 
   return (
     <div className="relaive sm:8 p-4 bg-[#13131a] min-h-screen flex flex-row">
@@ -47,7 +64,13 @@ function App() {
           <Route path="/" element={<Home setIsActive={handleActive} />} />
           <Route
             path="/register"
-            element={<Register setIsActive={handleActive} />}
+            element={
+              <Register
+                setIsActive={handleActive}
+                isAuthorisedLab={isAuthorisedLab}
+                isAuthorisedDoctor={isAuthorisedDoctor}
+              />
+            }
           />
           <Route
             path="/upload-reports"
@@ -59,7 +82,13 @@ function App() {
           />
           <Route
             path="/search-report"
-            element={<SearchReport setIsActive={handleActive} />}
+            element={
+              <SearchReport
+                setIsActive={handleActive}
+                isAuthorisedLab={isAuthorisedLab}
+                isAuthorisedDoctor={isAuthorisedDoctor}
+              />
+            }
           />
           <Route
             path="/create-campaign"
