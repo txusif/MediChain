@@ -68,7 +68,7 @@ const SearchReport = ({ setIsActive }) => {
         <DisplayReports
           title={contentId.length === 1 ? "Report Found" : "Reports Found"}
           isLoading={isLoading}
-          reports={contentId}
+          reports={contentId.reverse()}
           titleSize="sm:text-[1rem] text-[0.8rem]"
         />
       )}

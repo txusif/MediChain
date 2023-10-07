@@ -12,7 +12,9 @@ import {
 
 import { uploadReports } from "../assets";
 
-const notify = () => toast.error("Permission Denied");
+const notify = () => toast.error("Only registered labs can uplaod reports");
+
+const uploadClicked = () => console.log("Uploading");
 
 const UploadReports = ({ setIsActive }) => {
   setIsActive("Upload Reports");
@@ -68,6 +70,7 @@ const UploadReports = ({ setIsActive }) => {
     setIsLoading(true);
     console.log(formatedForm);
     await saveReport({ ...formatedForm, fileHash: contentId });
+    toast.success("Report uploaded");
 
     setIsLoading(false);
     navigate("/search-report");
@@ -198,7 +201,7 @@ const UploadReports = ({ setIsActive }) => {
             title="Upload Report"
             styles="bg-[#1dc071]"
             isConnected={address}
-            handleClick={isAuthorisedLab ? " " : notify}
+            handleClick={isAuthorisedLab ? uploadClicked : notify}
           />
         </div>
 

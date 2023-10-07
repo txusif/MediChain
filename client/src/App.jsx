@@ -31,10 +31,13 @@ function App() {
       <Toaster
         position="top-center"
         toastOptions={{
-          duration: 2000,
+          duration: 3000,
           style: {
             background: "#1c1c24",
             color: "#fff",
+          },
+          success: {
+            duration: 2000,
           },
         }}
       />

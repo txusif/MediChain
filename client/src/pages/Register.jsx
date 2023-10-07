@@ -9,6 +9,7 @@ import {
   FormFieldCopy,
   Loader,
 } from "../components";
+import toast from "react-hot-toast";
 
 const tabsItems = ["Register as Doctor", "Register as Lab"];
 
@@ -54,6 +55,7 @@ const Register = ({ setIsActive }) => {
 
     setIsLoading(true);
     await register(form.name, form.id, openTab);
+    toast.success("Registeration Successful");
     setIsLoading(false);
     navigate("/upload-reports");
   };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const FileUploadComponent = ({
   address,
@@ -46,6 +47,8 @@ const FileUploadComponent = ({
       setContentId(response.data.IpfsHash);
 
       const ipfsUrl = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
+
+      toast.success("Filehash generated");
 
       setFileURI(ipfsUrl);
     } catch (error) {
