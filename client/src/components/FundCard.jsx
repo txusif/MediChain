@@ -21,11 +21,11 @@ const FundCard = ({
   return (
     <div
       className={`max-sm:m-auto w-[288px] rounded-[15px] cursor-pointer ${
-        amountCollected === target ? "bg-[#395144]" : "bg-[#1c1c24]"
+        amountCollected === target ? "bg-[#395144] bg-opacity-75" : "bg-[#1c1c24]"
       }
       ${
         remainingDays < 0 && amountCollected !== target
-          ? "bg-[#A73121]"
+          ? "bg-[#A73121] bg-opacity-40"
           : "bg-[#1c1c24]"
       }
       
