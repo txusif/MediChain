@@ -167,7 +167,7 @@ const CampaignDetails = () => {
             Fund
           </h4>
 
-          <div className="block mt-1 sm:mr-[250px] mr-[220px]">
+          <div className="block mt-1 sm:mr-[250px] mr-[130px]">
             <a
               href={fileURI + state.fileHash}
               target="_blank"
