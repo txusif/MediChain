@@ -174,7 +174,7 @@ contract MedichainApp1 is ChainlinkClient {
             this.fulfill.selector
         );
 
-        string memory url = append("https://restapi-3y2x.onrender.com/", id);
+        string memory url = append("https://api-medichain.onrender.com/", id);
         req.add("get", url);
         req.add("path", "res");
         int256 timesAmount = 10;
