@@ -73,7 +73,7 @@ const CampaignDetails = () => {
           </div>
         </div>
 
-        <div className="flex md:w-[150px] w-full flex-row md:flex-col justify-between gap-[30px]">
+        <div className="flex md:w-[150px] w-full flex-row md:flex-col justify-between gap-[5px]">
           <CountBox
             title={remainingDays <= 0 ? endDate : "Days Left"}
             value={remainingDays <= 0 ? "Ended On" : remainingDays}
@@ -167,7 +167,7 @@ const CampaignDetails = () => {
             Fund
           </h4>
 
-          <div className="block mt-1 sm:mr-[250px] mr-[250px]">
+          <div className="block mt-1 sm:mr-[250px] mr-[220px]">
             <a
               href={fileURI + state.fileHash}
               target="_blank"
