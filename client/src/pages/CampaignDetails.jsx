@@ -42,6 +42,7 @@ const CampaignDetails = () => {
   };
 
   const funded = state.amountCollected === state.target;
+  const fileURI = `https://gateway.pinata.cloud/ipfs/`;
 
   return (
     <div>
@@ -74,8 +75,8 @@ const CampaignDetails = () => {
 
         <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
           <CountBox
-            title={remainingDays < 0 ? endDate : "Days Left"}
-            value={remainingDays < 0 ? "Ended On" : remainingDays}
+            title={remainingDays <= 0 ? endDate : "Days Left"}
+            value={remainingDays <= 0 ? "Ended On" : remainingDays}
             daysLeft={remainingDays}
           />
           <CountBox
@@ -94,7 +95,7 @@ const CampaignDetails = () => {
             </h4>
 
             <div className="mt-[30px] flex flex-row items-center flex-wrap gap-[14px]">
-              <div className="sm:w-[52px] sm:h-[52px] w-[40px] h-[40px] flex flex-row items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
+              <div className="sm:w-[52px] sm:h-[52px] w-[40px] h-[40px] flex flex-row items-center justify-center rounded-full bg-[#2c2f32]">
                 <img
                   src={thirdweb}
                   alt="user"
@@ -165,6 +166,17 @@ const CampaignDetails = () => {
           <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase">
             Fund
           </h4>
+
+          <div className="block mt-1 sm:mr-[250px] mr-[290px]">
+            <a
+              href={fileURI + state.fileHash}
+              target="_blank"
+              className="flex justify-center items-center font-epilogue font-semibold text-[16px] leading-[26px] text-white min-h-[35px] px-4 py-2 rounded-[6px] outline-none focus:ring ring-offset-2 focus:ring-[#1dc071] bg-[#1dc071]"
+            >
+              View Document
+            </a>
+          </div>
+
           <div className="mt-[20px] flex flex-col p-4 bg-[#1c1c24] rounded-[10px]">
             <p className="font-epilogue font-medium text-[20px] leading-[30px] text-center text-[#808191]">
               Fund the campaign

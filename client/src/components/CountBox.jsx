@@ -5,7 +5,7 @@ const CountBox = ({ title, value, daysLeft }) => {
     <div className="flex flex-col items-center w-[150px]">
       <h4
         className={`font-epilogue font-bold text-white p-3 bg-[#1c1c24] rounded-t-[10px] w-full text-center truncate ${
-          daysLeft < 0 ? "text-[25px]" : "text-[30px]"
+          daysLeft <= 0 ? "text-[25px]" : "text-[30px]"
         }`}
       >
         {value}

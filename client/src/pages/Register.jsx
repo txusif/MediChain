@@ -131,6 +131,11 @@ const Register = ({ setIsActive }) => {
           <FormField
             labelName="Unique Id *"
             placeholder="Enter your unique id"
+            // placeholder={
+            //   openTab === 0
+            //     ? "Enter your unique id (eg: doc000)"
+            //     : "Enter your unique id (eg: lab000)"
+            // }
             inputType="text"
             value={form.id}
             handleChange={(e) => {
