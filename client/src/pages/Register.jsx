@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context";
 
-import {
-  CustomButton,
-  FormField,
-  FormFieldCopy,
-  Loader,
-} from "../components";
+import { CustomButton, FormField, FormFieldCopy, Loader } from "../components";
 import toast from "react-hot-toast";
 
 const tabsItems = ["Register as Doctor", "Register as Lab"];
@@ -27,9 +22,9 @@ const TabsComponent = ({ name, onSelect, bg }) => {
   );
 };
 
-const Register = ({ setIsActive, isAuthorisedDoctor,isAuthorisedLab }) => {
+const Register = ({ setIsActive, isAuthorisedDoctor, isAuthorisedLab }) => {
   setIsActive("Register");
-const { address, contract, register, isDoctor, isLab } = useStateContext();
+  const { address, contract, register, isDoctor, isLab } = useStateContext();
 
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +49,7 @@ const { address, contract, register, isDoctor, isLab } = useStateContext();
 
     setIsLoading(true);
     await register(form.name, form.id, openTab);
-    toast.success("Registeration Successful");
+    toast.success("Registration Successful");
     setIsLoading(false);
     navigate("/upload-reports");
   };
@@ -131,12 +126,12 @@ const { address, contract, register, isDoctor, isLab } = useStateContext();
 
           <FormField
             labelName="Unique Id *"
-            placeholder="Enter your unique id"
-            // placeholder={
-            //   openTab === 0
-            //     ? "Enter your unique id (eg: doc000)"
-            //     : "Enter your unique id (eg: lab000)"
-            // }
+            // placeholder="Enter your unique id"
+            placeholder={
+              openTab === 0
+                ? "Enter your unique id (eg: dr0000)"
+                : "Enter your unique id (eg: lab000)"
+            }
             inputType="text"
             value={form.id}
             handleChange={(e) => {
