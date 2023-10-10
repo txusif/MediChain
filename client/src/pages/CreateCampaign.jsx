@@ -177,7 +177,7 @@ const CreateCampaign = ({ setIsActive }) => {
             onChange={(e) => {
               handleForFieldChange("fileHash", e);
             }}
-            class="font-epilogue bg-gray-50 border border-[#3a3a43] text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white outline-none "
+            class="font-epilogue border text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 dark:text-white outline-none "
           >
             <option selected>Choose a document</option>
             {contentId.map((report) => (
