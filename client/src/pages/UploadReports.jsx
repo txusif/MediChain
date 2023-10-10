@@ -12,7 +12,7 @@ import {
 
 import { uploadReports } from "../assets";
 
-const notify = () => toast.error("Only registered labs can uplaod reports");
+const notify = () => toast.error("Only registered labs can upload reports");
 
 const uploadClicked = () => console.log("Uploading");
 

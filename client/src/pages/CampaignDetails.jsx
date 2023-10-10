@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { useStateContext } from "../context";
 import { CustomButton, CountBox, Loader, CopyContent } from "../components";
@@ -36,6 +37,7 @@ const CampaignDetails = () => {
       console.log(amount);
       setIsLoading(true);
       await donate(state.pId, amount);
+      toast.success("Successful");
       navigate("/campaigns");
       setIsLoading(false);
     }
