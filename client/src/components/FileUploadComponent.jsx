@@ -37,9 +37,8 @@ const FileUploadComponent = ({
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            pinata_api_key: "15db73ce6b671690ea00",
-            pinata_secret_api_key:
-              "b2bc3242f6023b605204b95560ec3d821ccb314e76f2e4e62ab030b960c08bb2",
+            pinata_api_key: import.meta.env.VITE_PINATA_API_KEY,
+            pinata_secret_api_key: import.meta.env.VITE_PINATA_SECRET_API_KEY,
           },
         }
       );
@@ -55,6 +54,9 @@ const FileUploadComponent = ({
       console.error("Error uploading file:", error);
     }
   };
+
+  console.log(import.meta.env.VITE_PINATA_API_KEY);
+  console.log(import.meta.env.VITE_PINATA_SECRET_API_KEY);
 
   return (
     <div>
