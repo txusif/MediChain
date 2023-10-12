@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { logo } from "../assets";
+import { sidebarLogo } from "../assets";
 import { navlinks } from "../constants";
 import { Icon } from "../components";
 
@@ -14,8 +14,9 @@ const Sidebar = ({ isActive, setIsActive }) => {
     <div className="flex justify-between items-center flex-col sticky top-5 h-[65vh]">
       <Link to="/">
         <Icon
-          styles="w-[52px] h-[52px] bg-[#2c2f32]"
-          imgUrl={logo}
+          styles="w-[58px] h-[58px] bg-[#1c1c24] rounded-full"
+          imgUrl={sidebarLogo}
+          size="w-full h-full"
           handleClick={() => {
             setIsActive("Home");
           }}

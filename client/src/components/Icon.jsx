@@ -1,6 +1,6 @@
 import React from "react";
 
-const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
+const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick, size }) => (
   <div
     className={`w-[50px] h-[50px] rounded-[10px] ${
       isActive && isActive === name && "bg-[#2c2f32]"
@@ -10,7 +10,7 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
     onClick={handleClick}
   >
     {!isActive ? (
-      <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2" />
+      <img src={imgUrl} alt="fund_logo" className={`w-1/2 h-1/2 ${size}`}/>
     ) : (
       <img
         src={imgUrl}

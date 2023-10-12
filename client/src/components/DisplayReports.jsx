@@ -2,7 +2,12 @@ import React from "react";
 import { loader } from "../assets";
 import ReportCard from "./ReportCard";
 
-const DisplayReports = ({ title, isLoading, reports, titleSize }) => {
+const DisplayReports = ({
+  title,
+  isLoading,
+  reports,
+  titleSize,
+}) => {
   return (
     <div>
       <h1
@@ -29,7 +34,10 @@ const DisplayReports = ({ title, isLoading, reports, titleSize }) => {
         {!isLoading &&
           reports.length > 0 &&
           reports.map((report) => (
-            <ReportCard key={report.fileHash} {...report} />
+            <ReportCard
+              key={report.fileHash}
+              {...report}
+            />
           ))}
       </div>
     </div>

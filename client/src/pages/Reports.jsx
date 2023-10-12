@@ -5,8 +5,13 @@ import { CustomButton, DisplayReports } from "../components";
 const Reports = ({ setIsActive }) => {
   setIsActive("Reports");
   const [isLoading, setIsLoading] = useState(false);
-  const { address, contract, getUserReports, getDetailedReport } =
-    useStateContext();
+  const {
+    address,
+    contract,
+    getUserReports,
+    getDetailedReport,
+    getAuthorisedDetails,
+  } = useStateContext();
   const [contentId, setContentId] = useState([]);
 
   const fetch = async () => {

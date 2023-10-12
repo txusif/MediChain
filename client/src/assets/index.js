@@ -5,6 +5,7 @@ import home from "./home.svg";
 import loader from "./loader.svg";
 import logo from "./logo.svg";
 import logo2 from "./logo2.png";
+import sidebarLogo from "./sidebarLogo.svg";
 import mainLogo from "./mainLogo.svg";
 import menu from "./menu.svg";
 import money from "./money.svg";
@@ -26,6 +27,7 @@ export {
   createCampaign,
   logo,
   logo2,
+  sidebarLogo,
   mainLogo,
   payment,
   profile,

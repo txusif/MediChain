@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { ConnectMetamask } from "../components";
-import { logo, mainLogo, menu, search, thirdweb } from "../assets";
+import { logo, menu, profile } from "../assets";
 import { navlinks } from "../constants";
 import { Icon } from "../components";
 
@@ -13,32 +13,22 @@ const Navbar = () => {
 
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
-      <div className="lg:flex-1 flex flex-row max-w-[250px] py-2 pl-4 pr-2 h-[52px] bg-[#1c1c24] rounded-bl-[20px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px]">
-        <h1 className="font-epilogue tracking-wider flex font-bold text-[#1dc071] m-auto text-[26px] items-center">
-          MediChain
-        </h1>
-        {/* <input
-          type="text"
-          placeholder="Search for campaigns"
-          className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none"
-        />
+      <Link to="/">
+        <div className="lg:flex-1 flex flex-row max-w-[250px] py-2 pl-10 pr-9 h-[52px] bg-[#1c1c24] rounded-bl-[20px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px]">
+          <h1 className="font-epilogue tracking-wider flex font-bold text-[#1dc071] m-auto text-[26px] items-center">
+            MediChain
+          </h1>
+        </div>
+      </Link>
 
-        <div className="w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer">
-          <img
-            src={search}
-            alt="search"
-            className="w-[15px] h-[15px] object-contain"
-          />
-        </div> */}
-      </div>
       <div className="sm:flex hidden flex-row justify-end gap-4">
         <ConnectMetamask />
         <Link to="/profile">
-          <div className="w-[52px] h-[52px] rounded-full bg-[#2c2f32] flex justify-center items-center cursor-pointer">
+          <div className="w-[52px] h-[52px] rounded-full bg-[#1c1c24] flex justify-center items-center cursor-pointer">
             <img
-              src={thirdweb}
+              src={profile}
               alt="user"
-              className="w-[60%] h-[60%] object-contain"
+              className="w-[60%] h-[60%] object-contain grayscale"
             />
           </div>
         </Link>
