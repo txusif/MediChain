@@ -50,13 +50,13 @@ Before getting started, you'll need to have the following installed:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/txusif/MediApp
+   git clone https://github.com/txusif/MediChain
    ```
 
 2. Navigate to the project directory:
 
    ```
-   cd MediApp/client
+   cd MediChain/client
    ```
 
 3. Install dependencies:
