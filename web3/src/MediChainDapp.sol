@@ -3,7 +3,7 @@ pragma solidity ^0.8.13;
 
 import {ChainlinkClient, Chainlink} from "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 
-contract MedichainApp1 is ChainlinkClient {
+contract MedichainDapp is ChainlinkClient {
     using Chainlink for Chainlink.Request;
     address owner;
 
@@ -174,7 +174,7 @@ contract MedichainApp1 is ChainlinkClient {
             this.fulfill.selector
         );
 
-        string memory url = append("https://restapi-3y2x.onrender.com/", id);
+        string memory url = append("https://api-medichain.onrender.com/", id);
         req.add("get", url);
         req.add("path", "res");
         int256 timesAmount = 10;
