@@ -14,8 +14,8 @@ const Navbar = () => {
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
       <Link to="/">
-        <div className="lg:flex-1 flex flex-row max-w-[250px] py-2 pl-10 pr-9 h-[52px] bg-[#1c1c24] rounded-bl-[20px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px]">
-          <h1 className="font-epilogue tracking-wider flex font-bold text-[#1dc071] m-auto text-[26px] items-center">
+        <div className="lg:flex-1 flex flex-row max-w-[250px] py-2 pl-10 pr-9 h-[52px] bg-[#1c1c24] rounded-bl-[20px] rounded-tl-[50px] rounded-br-[50px] rounded-tr-[20px] utline-none focus:ring ring-offset-2 focus:ring-[#1dc071]">
+          <h1 className="font-epilogue tracking-wider flex font-bold text-[#1dc071] m-auto text-[26px] items-center o">
             MediChain
           </h1>
         </div>

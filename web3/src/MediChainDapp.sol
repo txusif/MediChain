@@ -26,6 +26,7 @@ contract MedichainDapp is ChainlinkClient {
         fee = (1 * LINK_DIVISIBILITY) / 10; // 0,1 * 10**18 (Varies by network and job)
     }
 
+    // Structs to store data
     struct GeneralInfo {
         int256 age;
         int256 height;
@@ -69,6 +70,8 @@ contract MedichainDapp is ChainlinkClient {
         address[] donators;
         uint256[] donations;
     }
+
+    // Mappings to store data
     mapping(uint256 => Campaign) public campaigns;
     uint256 public numberOfCampaigns = 0;
 
@@ -85,6 +88,7 @@ contract MedichainDapp is ChainlinkClient {
     mapping(address => string[]) UserReports; // maintain reports belonging to a user with address as key
     mapping(string => File) Files;
 
+    // Events to emit
     event LabAuthorised(
         string name,
         address _authAddre,
@@ -118,6 +122,7 @@ contract MedichainDapp is ChainlinkClient {
         string bloodGroup
     );
 
+    // Modifiers to restrict access
     modifier OnlyOwner() {
         require(
             msg.sender == owner,
@@ -131,32 +136,38 @@ contract MedichainDapp is ChainlinkClient {
         _;
     }
 
+    // Function to get user reports
     function getUserReports(
         address _address
     ) public view returns (string[] memory) {
         return UserReports[_address];
     }
 
+    // Function to get detailed report
     function GetDetailedReport(
         string memory _fileHash
     ) public view returns (File memory) {
         return Files[_fileHash];
     }
 
+    // Function to get all labs
     function GetAllLabs() public view returns (address[] memory) {
         return Labs;
     }
 
+    // Function to get all doctors
     function GetAllDoctors() public view returns (address[] memory) {
         return Doctors;
     }
 
+    // Function to get authentication details
     function GetAuthDetails(
         address _address
     ) public view returns (AuthUser memory) {
         return AuthDetails[_address];
     }
 
+    // Function to check authorisation
     function checkAuthorisation(
         string memory name,
         string memory id,
@@ -186,6 +197,7 @@ contract MedichainDapp is ChainlinkClient {
         return requestId;
     }
 
+    // Function to fulfill request
     function fulfill(
         bytes32 _requestId,
         uint256 _res
@@ -220,6 +232,7 @@ contract MedichainDapp is ChainlinkClient {
         IdUsed[applicant.auth_id] = true;
     }
 
+    // Function to save report
     function SaveReport(
         string memory _fileHash,
         string memory category,
@@ -256,27 +269,31 @@ contract MedichainDapp is ChainlinkClient {
         return true;
     }
 
-    //Owner function for configurations
+    // Function to set owner
     function setOwner(address _owner) public OnlyOwner returns (bool) {
         owner = _owner;
         return true;
     }
 
+    // Function to set oracle
     function setOracle(address _oracle) public OnlyOwner returns (bool) {
         oracle = _oracle;
         return true;
     }
 
+    // Function to set job ID
     function setJobId(bytes32 _jobId) public OnlyOwner returns (bool) {
         jobId = _jobId;
         return true;
     }
 
+    // Function to set fee
     function setFee(uint256 _fee) public OnlyOwner returns (bool) {
         fee = _fee;
         return true;
     }
 
+    // Function to add authorised lab
     function addAuthLab(
         address _authAddress,
         string memory name,
@@ -297,6 +314,7 @@ contract MedichainDapp is ChainlinkClient {
         emit LabAuthorised(name, _authAddress, _authId, block.timestamp); //emit an event when new authorisation is given
     }
 
+    // Function to add authorised doctor
     function addAuthDoc(
         address _authAddress,
         string memory name,
@@ -317,6 +335,7 @@ contract MedichainDapp is ChainlinkClient {
         emit DoctorAuthorised(name, _authAddress, _authId, block.timestamp); //emit an event when new authorisation is given
     }
 
+    // Function to append strings
     function append(
         string memory _url,
         string memory _id
@@ -324,6 +343,7 @@ contract MedichainDapp is ChainlinkClient {
         return string(abi.encodePacked(_url, _id));
     }
 
+    // Function to create campaign
     function createCampaign(
         address _owner,
         string memory _title,
@@ -354,6 +374,7 @@ contract MedichainDapp is ChainlinkClient {
         return numberOfCampaigns - 1;
     }
 
+    // Function to donate to campaign
     function donateToCampaign(uint256 _id) public payable {
         uint256 amount = msg.value;
 
@@ -369,12 +390,14 @@ contract MedichainDapp is ChainlinkClient {
         }
     }
 
+    // Function to get donators
     function getDonators(
         uint256 _id
     ) public view returns (address[] memory, uint256[] memory) {
         return (campaigns[_id].donators, campaigns[_id].donations);
     }
 
+    // Function to get all campaigns
     function getCampaigns() public view returns (Campaign[] memory) {
         Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);
 

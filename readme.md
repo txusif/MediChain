@@ -110,8 +110,37 @@ Please refer to the `package.json` file for version information on these depende
 
 ## Screenshots
 
-![Screenshot 1](screenshots/screenshot1.png)
-![Screenshot 2](screenshots/screenshot2.png)
+### Home Page
+![Home Page](results/welcomPage.png)
+### Features Section
+![Features Section](results/featureSection.png)
+### Footer
+![Features Section](results/footer.png)
+### Connect Wallet
+![Connect Wallet](results/connectWallet.png)
+### Choose Account
+![Choose Account](results/selectAccount.png)
+### Doctor Registration
+![Register as Doctor](results/doctorRegister.png)
+### Lab Registration
+![Register as Lab](results/labRegister.png)
+### Upload Reports Page
+![Uplaod Reports Page](results/uploadReport.png)
+### View Reports Page
+![View Reports Page](results/reports.png)
+### Search Reports Page
+![Search Reports Page](results/searchReports.png)
+### Create Campaign Page
+![Create Campaign Page](results/createCampaign.png)
+### View Campaigns Page
+![View Campaigns Page](results/campaigns.png)
+### Campaign Details Page
+![Campaign Details Page](results/campaignDetails.png)
+### Fund a Campaign
+![Fund a Campaign](results/fundCampaign.png)
+### Profile Page
+![Profile Page](results/profilePage.png)
+### 
 
 ## Contributing
 
