@@ -1,6 +1,8 @@
 # MediChain Dapp
 
-MediChain is a decentralized application (Dapp) designed to revolutionize the way medical data is stored, shared, and accessed securely on the blockchain.
+MediChain is a decentralized app leveraging blockchain for secure medical data storage and sharing, featuring Metamask integration, distinct user roles, medical crowdfunding campaigns, and intuitive interface, deployed on Polygon Mumbai.
+
+[Explore Medichain🚀](https://medichain-app.vercel.app/)
 
 ## Table of Contents
 
@@ -10,6 +12,7 @@ MediChain is a decentralized application (Dapp) designed to revolutionize the wa
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Tech Stack](#tech-stack)
+- [Contract Deployment](#contract-deployment)
 - [Usage](#usage)
 - [User Roles](#user-roles)
 - [Screenshots](#screenshots)
@@ -95,6 +98,10 @@ This project is built using the following technologies and libraries:
 
 Please refer to the `package.json` file for version information on these dependencies.
 
+## Contract Deployment
+
+The contract for the Medichain app is deployed on the `Polygon Mumbai` network.
+
 ## Usage
 
 - Visit the Dapp homepage.
@@ -111,36 +118,66 @@ Please refer to the `package.json` file for version information on these depende
 ## Screenshots
 
 ### Home Page
+
 ![Home Page](results/welcomPage.png)
+
 ### Features Section
+
 ![Features Section](results/featureSection.png)
+
 ### Footer
+
 ![Features Section](results/footer.png)
+
 ### Connect Wallet
+
 ![Connect Wallet](results/connectWallet.png)
+
 ### Choose Account
+
 ![Choose Account](results/selectAccount.png)
+
 ### Doctor Registration
+
 ![Register as Doctor](results/doctorRegister.png)
+
 ### Lab Registration
+
 ![Register as Lab](results/labRegister.png)
+
 ### Upload Reports Page
+
 ![Uplaod Reports Page](results/uploadReport.png)
+
 ### View Reports Page
+
 ![View Reports Page](results/reports.png)
+
 ### Search Reports Page
+
 ![Search Reports Page](results/searchReports.png)
+
 ### Create Campaign Page
+
 ![Create Campaign Page](results/createCampaign.png)
+
 ### View Campaigns Page
+
 ![View Campaigns Page](results/campaigns.png)
+
 ### Campaign Details Page
+
 ![Campaign Details Page](results/campaignDetails.png)
+
 ### Fund a Campaign
+
 ![Fund a Campaign](results/fundCampaign.png)
+
 ### Profile Page
+
 ![Profile Page](results/profilePage.png)
-### 
+
+###
 
 ## Contributing
 
