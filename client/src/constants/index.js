@@ -118,7 +118,7 @@ export const socialLinks = [
   },
   {
     icon: faXTwitter,
-    link: "https://x.com/txusiff",
+    link: "https://x.com/txusif",
   },
   {
     icon: faInstagram,
