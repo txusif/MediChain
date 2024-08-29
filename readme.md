@@ -4,6 +4,8 @@ MediChain is a decentralized app leveraging blockchain for secure medical data s
 
 [Explore Medichain🚀](https://medichain-app.vercel.app/)
 
+![Home Page](results/welcomPage.png)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
