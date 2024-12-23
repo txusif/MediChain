@@ -14,12 +14,12 @@ import {
 } from "../assets";
 
 import {
-  faInstagram,
+  // faInstagram,
   faXTwitter,
   faLinkedin,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+// import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 export const navlinks = [
   {
@@ -112,16 +112,20 @@ export const socialLinks = [
     icon: faGithub,
     link: "http://github.com/txusif",
   },
-  {
-    icon: faLink,
-    link: "https://linktr.ee/txusif",
-  },
+  // {
+  //   icon: faLink,
+  //   link: "https://linktr.ee/txusif",
+  // },
   {
     icon: faXTwitter,
     link: "https://x.com/txusif",
   },
-  {
-    icon: faInstagram,
-    link: "https://instagram.com/txusif",
-  },
+  // {
+  //   icon: faInstagram,
+  //   link: "https://instagram.com/txusif",
+  // },
+  // {
+  //   icon: portfolio,
+  //   link: "https://www.txusif.me",
+  // },
 ];
