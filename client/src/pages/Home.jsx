@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Feature, Socials } from "../components";
 import { features, socialLinks } from "../constants";
 
