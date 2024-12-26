@@ -5,6 +5,7 @@ import {ChainlinkClient, Chainlink} from "@chainlink/contracts/src/v0.8/Chainlin
 
 contract MedichainDapp is ChainlinkClient {
     using Chainlink for Chainlink.Request;
+
     address owner;
 
     address public oracle;
@@ -14,7 +15,7 @@ contract MedichainDapp is ChainlinkClient {
     constructor() {
         owner = msg.sender;
         // setChainlinkToken(0x779877A7B0D9E8603169DdbD7836e478b4624789);
-        setChainlinkToken(0x326C977E6efc84E512bB9C30f76E30c160eD06FB);
+        _setChainlinkToken(0x326C977E6efc84E512bB9C30f76E30c160eD06FB);
 
         // Sepolia testnet
         // oracle = 0x6090149792dAAeE9D1D568c9f9a6F6B46AA29eFD;
@@ -40,7 +41,7 @@ contract MedichainDapp is ChainlinkClient {
         string category;
         address user;
         address byLab;
-        uint dated;
+        uint256 dated;
         GeneralInfo generalInfo;
     }
 
@@ -48,7 +49,7 @@ contract MedichainDapp is ChainlinkClient {
         string name;
         address _address;
         string auth_id;
-        uint authOnDate;
+        uint256 authOnDate;
     }
 
     struct Applicant {
@@ -93,14 +94,14 @@ contract MedichainDapp is ChainlinkClient {
         string name,
         address _authAddre,
         string AuthId,
-        uint AuthOnDate
+        uint256 AuthOnDate
     );
 
     event DoctorAuthorised(
         string name,
         address _authAddre,
         string AuthId,
-        uint AuthOnDate
+        uint256 AuthOnDate
     );
 
     event ApplicationResult(
@@ -114,7 +115,7 @@ contract MedichainDapp is ChainlinkClient {
         string category,
         address PatientName,
         address LabName,
-        uint AddedAt,
+        uint256 AddedAt,
         int256 age,
         int256 height,
         int256 weight,
@@ -179,19 +180,19 @@ contract MedichainDapp is ChainlinkClient {
         );
         require(!IdUsed[id], "Id already used"); // to stop function spamming
 
-        Chainlink.Request memory req = buildChainlinkRequest(
+        Chainlink.Request memory req = _buildChainlinkRequest(
             jobId,
             address(this),
             this.fulfill.selector
         );
 
         string memory url = append("https://api-medichain.onrender.com/", id);
-        req.add("get", url);
-        req.add("path", "res");
+        req._add("get", url);
+        req._add("path", "res");
         int256 timesAmount = 10;
-        req.addInt("times", timesAmount);
+        req._addInt("times", timesAmount);
 
-        requestId = sendChainlinkRequestTo(oracle, req, fee);
+        requestId = _sendChainlinkRequestTo(oracle, req, fee);
         GetApplicant[requestId] = Applicant(msg.sender, name, id, applyId);
 
         return requestId;
@@ -401,7 +402,7 @@ contract MedichainDapp is ChainlinkClient {
     function getCampaigns() public view returns (Campaign[] memory) {
         Campaign[] memory allCampaigns = new Campaign[](numberOfCampaigns);
 
-        for (uint i = 0; i < numberOfCampaigns; i++) {
+        for (uint256 i = 0; i < numberOfCampaigns; i++) {
             Campaign storage item = campaigns[i];
 
             allCampaigns[i] = item;

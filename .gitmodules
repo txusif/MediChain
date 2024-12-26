@@ -1,0 +1,3 @@
+[submodule "web3/lib/chainlink"]
+	path = web3/lib/chainlink
+	url = https://github.com/smartcontractkit/chainlink

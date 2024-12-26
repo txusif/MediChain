@@ -130,7 +130,7 @@ const Register = ({ setIsActive, isAuthorisedDoctor, isAuthorisedLab }) => {
             placeholder={
               openTab === 0
                 ? "Enter your unique id (eg: dr0000)"
-                : "Enter your unique id (eg: lab000)"
+                : "Enter your unique id (eg: lab0000)"
             }
             inputType="text"
             value={form.id}
