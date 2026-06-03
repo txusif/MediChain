@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+:root {
+  --teal: #0F6E56;
+  --teal-light: #E1F5EE;
+  --teal-mid: #1D9E75;
+  --teal-border: #9FE1CB;
+  --blue: #185FA5;
+  --blue-light: #E6F1FB;
+  --blue-border: #B5D4F4;
+  --amber: #BA7517;
+  --amber-light: #FAEEDA;
+  --amber-border: #FAC775;
+  --coral: #993C1D;
+  --coral-light: #FAECE7;
+  --coral-border: #F5C4B3;
+  --purple: #534AB7;
+  --purple-light: #EEEDFE;
+  --purple-border: #CECBF6;
+  --gray-light: #F1EFE8;
+  --gray-border: #D3D1C7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans, sans-serif); font-size: 14px; color: var(--color-text-primary); line-height: 1.6; background: transparent; }
+
+.prd { max-width: 680px; }
+
+.header { border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 20px; margin-bottom: 28px; }
+.header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.title-block {}
+.doc-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; background: var(--teal-light); color: var(--teal); border: 0.5px solid var(--teal-border); border-radius: 4px; padding: 3px 8px; margin-bottom: 8px; }
+h1 { font-size: 22px; font-weight: 500; line-height: 1.2; }
+.subtitle { font-size: 14px; color: var(--color-text-secondary); margin-top: 4px; }
+.meta-grid { display: flex; gap: 24px; flex-wrap: wrap; }
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+.meta-value { font-size: 13px; font-weight: 500; }
+
+.toc { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg, 12px); padding: 16px 20px; margin-bottom: 28px; }
+.toc-title { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-secondary); margin-bottom: 10px; }
+.toc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; list-style: none; }
+.toc-list li a { font-size: 13px; color: var(--color-text-secondary); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 2px 0; }
+.toc-list li a:hover { color: var(--color-text-primary); }
+.toc-num { font-size: 11px; font-weight: 500; color: var(--teal-mid); min-width: 18px; }
+
+section { margin-bottom: 32px; }
+.section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.section-num { width: 22px; height: 22px; border-radius: 50%; background: var(--teal-light); color: var(--teal); font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 0.5px solid var(--teal-border); }
+h2 { font-size: 16px; font-weight: 500; }
+p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px; }
+p:last-child { margin-bottom: 0; }
+
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg, 12px); padding: 14px 16px; margin-bottom: 10px; }
+.card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.card-icon { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.card-title { font-size: 14px; font-weight: 500; }
+.card-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+
+.pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 500; border-radius: 4px; padding: 3px 8px; margin: 2px 3px 2px 0; }
+.pill-teal { background: var(--teal-light); color: var(--teal); border: 0.5px solid var(--teal-border); }
+.pill-blue { background: var(--blue-light); color: var(--blue); border: 0.5px solid var(--blue-border); }
+.pill-amber { background: var(--amber-light); color: var(--amber); border: 0.5px solid var(--amber-border); }
+.pill-coral { background: var(--coral-light); color: var(--coral); border: 0.5px solid var(--coral-border); }
+.pill-purple { background: var(--purple-light); color: var(--purple); border: 0.5px solid var(--purple-border); }
+.pill-gray { background: var(--gray-light); color: var(--color-text-secondary); border: 0.5px solid var(--gray-border); }
+
+.stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stack-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); padding: 12px 14px; }
+.stack-layer { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 3px; }
+.stack-value { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+.stack-why { font-size: 12px; color: var(--color-text-secondary); }
+
+.phase-row { display: flex; gap: 10px; margin-bottom: 10px; }
+.phase-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+.phase-dot-teal { background: var(--teal-mid); }
+.phase-dot-blue { background: var(--blue); }
+.phase-dot-amber { background: var(--amber); }
+.phase-content { flex: 1; }
+.phase-title { font-size: 13px; font-weight: 500; }
+.phase-desc { font-size: 13px; color: var(--color-text-secondary); }
+
+.role-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.role-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); padding: 12px 14px; }
+.role-name { font-size: 13px; font-weight: 500; margin-bottom: 6px; padding-bottom: 6px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.role-item { font-size: 12px; color: var(--color-text-secondary); padding: 2px 0; display: flex; gap: 6px; align-items: flex-start; }
+.role-item::before { content: "·"; color: var(--teal-mid); font-weight: 700; flex-shrink: 0; }
+
+.chain-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.chain-card { border-radius: var(--border-radius-md, 8px); padding: 12px 14px; border: 0.5px solid; }
+.chain-primary { background: var(--teal-light); border-color: var(--teal-border); }
+.chain-secondary { background: var(--blue-light); border-color: var(--blue-border); }
+.chain-tertiary { background: var(--purple-light); border-color: var(--purple-border); }
+.chain-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.chain-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.chain-reason { font-size: 12px; }
+.chain-primary .chain-label { color: var(--teal); }
+.chain-primary .chain-name { color: var(--teal); }
+.chain-primary .chain-reason { color: var(--teal); }
+.chain-secondary .chain-label { color: var(--blue); }
+.chain-secondary .chain-name { color: var(--blue); }
+.chain-secondary .chain-reason { color: var(--blue); }
+.chain-tertiary .chain-label { color: var(--purple); }
+.chain-tertiary .chain-name { color: var(--purple); }
+.chain-tertiary .chain-reason { color: var(--purple); }
+
+.arch-block { display: grid; grid-template-columns: 120px 1fr; gap: 0; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); overflow: hidden; margin-bottom: 8px; }
+.arch-layer { background: var(--color-background-secondary); padding: 10px 12px; display: flex; align-items: center; border-right: 0.5px solid var(--color-border-tertiary); }
+.arch-layer-name { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+.arch-content { padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; }
+.arch-tech { font-size: 13px; font-weight: 500; }
+.arch-detail { font-size: 12px; color: var(--color-text-secondary); }
+
+.contract-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.contract-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); padding: 12px 14px; }
+.contract-name { font-family: var(--font-mono, monospace); font-size: 12px; font-weight: 500; color: var(--purple); background: var(--purple-light); border: 0.5px solid var(--purple-border); border-radius: 4px; padding: 2px 6px; display: inline-block; margin-bottom: 6px; }
+.contract-desc { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px; }
+.contract-fns { display: flex; flex-wrap: wrap; gap: 4px; }
+.fn-pill { font-family: var(--font-mono, monospace); font-size: 11px; background: var(--gray-light); color: var(--color-text-secondary); border: 0.5px solid var(--gray-border); border-radius: 3px; padding: 2px 6px; }
+
+.flow-step { display: flex; gap: 12px; margin-bottom: 8px; }
+.flow-num { width: 24px; height: 24px; border-radius: 50%; background: var(--teal-light); color: var(--teal); font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 0.5px solid var(--teal-border); }
+.flow-text { flex: 1; font-size: 13px; color: var(--color-text-secondary); padding-top: 4px; }
+.flow-text strong { color: var(--color-text-primary); font-weight: 500; }
+
+.nfr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.nfr-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md, 8px); padding: 12px 14px; }
+.nfr-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.nfr-item { font-size: 12px; color: var(--color-text-secondary); padding: 2px 0; display: flex; gap: 6px; align-items: flex-start; }
+.nfr-item::before { content: "—"; color: var(--color-border-secondary); flex-shrink: 0; }
+
+.milestone { display: flex; gap: 16px; margin-bottom: 12px; }
+.ms-week { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--teal); min-width: 80px; padding-top: 3px; }
+.ms-body { flex: 1; }
+.ms-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+.ms-tasks { font-size: 12px; color: var(--color-text-secondary); }
+
+.differentiator { background: var(--amber-light); border: 0.5px solid var(--amber-border); border-radius: var(--border-radius-md, 8px); padding: 12px 14px; margin-bottom: 10px; }
+.diff-title { font-size: 13px; font-weight: 500; color: var(--amber); margin-bottom: 4px; }
+.diff-desc { font-size: 13px; color: var(--amber); }
+
+.risk-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); padding: 8px 0; font-size: 12px; }
+.risk-row:last-child { border-bottom: none; }
+.risk-header { font-weight: 500; color: var(--color-text-secondary); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin: 24px 0; }
+</style>
+
+<div class="prd">
+
+<div class="header">
+  <div class="header-top">
+    <div class="title-block">
+      <div class="doc-badge"><i class="ti ti-file-description" aria-hidden="true"></i> Product Requirements Document</div>
+      <h1>MediChain v2</h1>
+      <p class="subtitle">Decentralised medical records & crowdfunding — rebuilt for 2025</p>
+    </div>
+  </div>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="meta-label">Author</span><span class="meta-value">Toushief Ansari</span></div>
+    <div class="meta-item"><span class="meta-label">Version</span><span class="meta-value">2.0.0-draft</span></div>
+    <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value" style="color:var(--teal-mid)">Ready for build</span></div>
+    <div class="meta-item"><span class="meta-label">Target chains</span><span class="meta-value">Base · Polygon PoS · Arbitrum One</span></div>
+    <div class="meta-item"><span class="meta-label">Est. timeline</span><span class="meta-value">8 weeks</span></div>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Contents</div>
+  <ul class="toc-list">
+    <li><a href="#s1"><span class="toc-num">01</span> Problem & goals</a></li>
+    <li><a href="#s6"><span class="toc-num">06</span> Smart contracts</a></li>
+    <li><a href="#s2"><span class="toc-num">02</span> Personas</a></li>
+    <li><a href="#s7"><span class="toc-num">07</span> User flows</a></li>
+    <li><a href="#s3"><span class="toc-num">03</span> Tech stack</a></li>
+    <li><a href="#s8"><span class="toc-num">08</span> Non-functional requirements</a></li>
+    <li><a href="#s4"><span class="toc-num">04</span> Architecture</a></li>
+    <li><a href="#s9"><span class="toc-num">09</span> Milestones</a></li>
+    <li><a href="#s5"><span class="toc-num">05</span> Features & roles</a></li>
+    <li><a href="#s10"><span class="toc-num">10</span> Portfolio differentiators</a></li>
+  </ul>
+</div>
+
+<!-- SECTION 1 -->
+<section id="s1">
+  <div class="section-label"><div class="section-num">01</div><h2>Problem statement & goals</h2></div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">⚡</div><div class="card-title">Why v1 failed in production</div></div>
+    <div class="card-body">
+      <div class="phase-row"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">MetaMask-only onboarding.</span> <span class="phase-desc">Required users to install a browser extension, create a wallet, and manage a seed phrase — too high a bar for medical patients and non-crypto doctors.</span></div></div>
+      <div class="phase-row"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">Polygon Mumbai deprecated.</span> <span class="phase-desc">The app is broken for all users. No mainnet deployment means zero credibility.</span></div></div>
+      <div class="phase-row"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">Stale stack.</span> <span class="phase-desc">Thirdweb v2, ethers v5, no account abstraction — all superseded. No Foundry tests for contract correctness.</span></div></div>
+      <div class="phase-row" style="margin-bottom:0"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">Single-chain lock-in.</span> <span class="phase-desc">One testnet was a student project. Multi-chain mainnet is a professional product.</span></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:0">
+    <div class="card-header"><div class="card-icon">🎯</div><div class="card-title">v2 goals</div></div>
+    <div class="card-body">
+      <div class="phase-row"><div class="phase-dot phase-dot-blue"></div><div class="phase-content"><span class="phase-title">Zero crypto prerequisite onboarding.</span> <span class="phase-desc">Email, Google, or phone login creates a smart wallet silently. No MetaMask, no seed phrase, no gas fees for the user.</span></div></div>
+      <div class="phase-row"><div class="phase-dot phase-dot-blue"></div><div class="phase-content"><span class="phase-title">Privacy-correct architecture.</span> <span class="phase-desc">Only content hashes go on-chain. Actual files are encrypted on IPFS; Lit Protocol gates decryption to patient-authorised wallets only.</span></div></div>
+      <div class="phase-row"><div class="phase-dot phase-dot-blue"></div><div class="phase-content"><span class="phase-title">Multi-chain mainnet deployment.</span> <span class="phase-desc">Live on Base, Polygon PoS, and Arbitrum One. Users pick their chain; Thirdweb handles switching.</span></div></div>
+      <div class="phase-row" style="margin-bottom:0"><div class="phase-dot phase-dot-blue"></div><div class="phase-content"><span class="phase-title">Portfolio-grade proof of work.</span> <span class="phase-desc">ERC-4337, Lit Protocol, Foundry scripts, multi-chain deploy — each a concrete signal for Web3 frontend roles.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="s2">
+  <div class="section-label"><div class="section-num">02</div><h2>Personas</h2></div>
+
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-name">🧑‍⚕️ Patient</div>
+      <div class="role-item">Signs up with email or Google</div>
+      <div class="role-item">Views their own medical reports</div>
+      <div class="role-item">Grants / revokes doctor access</div>
+      <div class="role-item">Creates crowdfunding campaigns</div>
+      <div class="role-item">Donates to other campaigns</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">👨‍⚕️ Doctor</div>
+      <div class="role-item">Signs up with email or Google</div>
+      <div class="role-item">Requests access to patient records</div>
+      <div class="role-item">Reads decrypted reports if granted</div>
+      <div class="role-item">Donates to campaigns</div>
+      <div class="role-item">Cannot upload reports</div>
+    </div>
+    <div class="role-card">
+      <div class="role-name">🔬 Lab</div>
+      <div class="role-item">Signs up with email or Google</div>
+      <div class="role-item">Uploads encrypted reports to patient</div>
+      <div class="role-item">Report hash stored on-chain</div>
+      <div class="role-item">Donates to campaigns</div>
+      <div class="role-item">Cannot view other patient records</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="s3">
+  <div class="section-label"><div class="section-num">03</div><h2>Tech stack</h2></div>
+
+  <div class="stack-grid">
+    <div class="stack-card">
+      <div class="stack-layer">Auth & wallets</div>
+      <div class="stack-value">Thirdweb v5</div>
+      <div class="stack-why">Email/Google/phone → smart account (ERC-4337). Paymaster sponsors all gas. One SDK for auth + multichain.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">Frontend</div>
+      <div class="stack-value">React + Next JS + TypeScript + Vite</div>
+      <div class="stack-why">Tailwind CSS for styling, Zustand for local state, TanStack Query for contract data fetching.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">Blockchain lib</div>
+      <div class="stack-value">viem + wagmi v2</div>
+      <div class="stack-why">Industry standard in 2025. Replaced ethers v5. TypeScript-first, tree-shakeable, minimal bundle.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">Smart contracts</div>
+      <div class="stack-value">Solidity + Foundry</div>
+      <div class="stack-why">OpenZeppelin for access control. Foundry for tests and multi-chain deploy scripts.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">File storage</div>
+      <div class="stack-value">IPFS via Pinata</div>
+      <div class="stack-why">Only encrypted file blobs stored off-chain. CIDs pinned per patient. Free tier sufficient for portfolio.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">Encryption / access</div>
+      <div class="stack-value">Lit Protocol</div>
+      <div class="stack-why">Decentralised access control. Files encrypted to patient's wallet. Time-limited access tokens for doctors.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">Deployment</div>
+      <div class="stack-value">Vercel + Foundry scripts</div>
+      <div class="stack-why">Frontend on Vercel. Contracts deployed with scripted Foundry runs to all 3 chains.</div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-layer">Cross-chain (Phase 2)</div>
+      <div class="stack-value">Chainlink CCIP</div>
+      <div class="stack-why">Cross-chain campaign donation signal. Major DeFi protocols adopting CCIP over LayerZero post-2026 exploits.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="s4">
+  <div class="section-label"><div class="section-num">04</div><h2>System architecture</h2></div>
+
+  <div class="arch-block">
+    <div class="arch-layer"><div class="arch-layer-name">Client</div></div>
+    <div class="arch-content">
+      <div class="arch-tech">React SPA (Vite)</div>
+      <div class="arch-detail">Thirdweb v5 hooks · wagmi v2 · TanStack Query · Zustand · Tailwind CSS</div>
+    </div>
+  </div>
+  <div class="arch-block">
+    <div class="arch-layer"><div class="arch-layer-name">Auth layer</div></div>
+    <div class="arch-content">
+      <div class="arch-tech">Thirdweb embedded wallet + ERC-4337 smart account</div>
+      <div class="arch-detail">Email/Google → MPC key shard → smart account address. Paymaster covers all gas fees. No seed phrase exposed.</div>
+    </div>
+  </div>
+  <div class="arch-block">
+    <div class="arch-layer"><div class="arch-layer-name">On-chain</div></div>
+    <div class="arch-content">
+      <div class="arch-tech">MediChain.sol · CampaignFactory.sol · PatientRegistry.sol</div>
+      <div class="arch-detail">Stores hashes of records, patient-doctor access grants, campaign state. Never stores raw file data.</div>
+    </div>
+  </div>
+  <div class="arch-block">
+    <div class="arch-layer"><div class="arch-layer-name">Storage</div></div>
+    <div class="arch-content">
+      <div class="arch-tech">Pinata (IPFS) + Lit Protocol encryption</div>
+      <div class="arch-detail">Files encrypted client-side with Lit before upload. CID stored on-chain. Lit controls decryption via wallet-based conditions.</div>
+    </div>
+  </div>
+  <div class="arch-block" style="margin-bottom:0">
+    <div class="arch-layer"><div class="arch-layer-name">Chains</div></div>
+    <div class="arch-content">
+      <div class="arch-tech">Base · Polygon PoS · Arbitrum One</div>
+      <div class="arch-detail">Same contracts deployed independently per chain via Foundry deploy scripts. User selects chain on login.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 -->
+<section id="s5">
+  <div class="section-label"><div class="section-num">05</div><h2>Features & role permissions</h2></div>
+
+  <div class="card" style="margin-bottom:10px">
+    <div class="card-header"><div class="card-icon">🔐</div><div class="card-title">Authentication & onboarding</div></div>
+    <div class="card-body">
+      Login via email OTP, Google OAuth, or phone number using Thirdweb embedded wallets. On first login, a smart account (ERC-4337) is created silently. The user then picks a role (Patient / Doctor / Lab) which is registered on-chain. Thirdweb Paymaster sponsors the registration transaction — user pays zero gas, ever.
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:10px">
+    <div class="card-header"><div class="card-icon">📄</div><div class="card-title">Medical record management</div></div>
+    <div class="card-body">
+      <div class="phase-row"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">Upload (Lab only).</span> <span class="phase-desc">Lab selects patient address, uploads PDF/image. Client encrypts the file with Lit Protocol keyed to patient's wallet, uploads ciphertext to IPFS/Pinata, stores CID hash on-chain via <span style="font-family:var(--font-mono);font-size:12px">addRecord(patientAddr, ipfsCID, fileHash)</span>.</span></div></div>
+      <div class="phase-row"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">View (Patient & authorised Doctors).</span> <span class="phase-desc">Patient always can decrypt. Doctor can only decrypt files where patient has called <span style="font-family:var(--font-mono);font-size:12px">grantAccess(doctorAddr)</span> on-chain. Lit verifies this condition against chain state before releasing the decryption key.</span></div></div>
+      <div class="phase-row" style="margin-bottom:0"><div class="phase-dot phase-dot-teal"></div><div class="phase-content"><span class="phase-title">Revoke.</span> <span class="phase-desc">Patient calls <span style="font-family:var(--font-mono);font-size:12px">revokeAccess(doctorAddr)</span>. Lit's conditions are re-evaluated on every decrypt attempt, so revocation is immediate.</span></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:0">
+    <div class="card-header"><div class="card-icon">💰</div><div class="card-title">Crowdfunding campaigns</div></div>
+    <div class="card-body">
+      Any registered user can create a campaign with title, description, target amount, deadline, and IPFS image. All users can donate native tokens to any campaign. <span style="font-family:var(--font-mono);font-size:12px">CampaignFactory.sol</span> deploys a new campaign contract per creation. Funds auto-release to creator if target met by deadline; otherwise, donors can reclaim (on-chain guarantee, no trusted third party).
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 -->
+<section id="s6">
+  <div class="section-label"><div class="section-num">06</div><h2>Smart contracts</h2></div>
+
+  <div class="contract-grid">
+    <div class="contract-card">
+      <div class="contract-name">PatientRegistry.sol</div>
+      <div class="contract-desc">Manages user registration and role assignment.</div>
+      <div class="contract-fns">
+        <span class="fn-pill">registerPatient()</span>
+        <span class="fn-pill">registerDoctor()</span>
+        <span class="fn-pill">registerLab()</span>
+        <span class="fn-pill">getRole(addr)</span>
+        <span class="fn-pill">isRegistered(addr)</span>
+      </div>
+    </div>
+    <div class="contract-card">
+      <div class="contract-name">MedicalRecords.sol</div>
+      <div class="contract-desc">Record storage (hashes only) and access control.</div>
+      <div class="contract-fns">
+        <span class="fn-pill">addRecord(patient, cid)</span>
+        <span class="fn-pill">getRecords(patient)</span>
+        <span class="fn-pill">grantAccess(doctor)</span>
+        <span class="fn-pill">revokeAccess(doctor)</span>
+        <span class="fn-pill">hasAccess(doctor, patient)</span>
+      </div>
+    </div>
+    <div class="contract-card">
+      <div class="contract-name">CampaignFactory.sol</div>
+      <div class="contract-desc">Factory pattern — deploys individual campaign contracts.</div>
+      <div class="contract-fns">
+        <span class="fn-pill">createCampaign(...)</span>
+        <span class="fn-pill">getCampaigns()</span>
+        <span class="fn-pill">getCampaignsByOwner(addr)</span>
+      </div>
+    </div>
+    <div class="contract-card">
+      <div class="contract-name">Campaign.sol</div>
+      <div class="contract-desc">Single campaign instance with fund/refund logic.</div>
+      <div class="contract-fns">
+        <span class="fn-pill">donate()</span>
+        <span class="fn-pill">withdraw()</span>
+        <span class="fn-pill">refund()</span>
+        <span class="fn-pill">getState()</span>
+        <span class="fn-pill">getDonors()</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:12px">
+    <p style="font-size:13px;"><strong style="font-weight:500">Foundry deliverables (required for portfolio):</strong> <span style="font-family:var(--font-mono);font-size:12px">test/</span> with unit tests for all public functions, fuzz tests on <span style="font-family:var(--font-mono);font-size:12px">donate()</span> and <span style="font-family:var(--font-mono);font-size:12px">refund()</span>. <span style="font-family:var(--font-mono);font-size:12px">script/Deploy.s.sol</span> that deploys all 4 contracts to all 3 chains from a single run.</p>
+  </div>
+</section>
+
+<!-- SECTION 7 -->
+<section id="s7">
+  <div class="section-label"><div class="section-num">07</div><h2>Key user flows</h2></div>
+
+  <div class="card" style="margin-bottom:10px">
+    <div class="card-header"><div class="card-icon">🚶</div><div class="card-title">New user onboarding (zero crypto knowledge)</div></div>
+    <div class="card-body">
+      <div class="flow-step"><div class="flow-num">1</div><div class="flow-text">User lands on MediChain → clicks <strong>"Get started with email"</strong></div></div>
+      <div class="flow-step"><div class="flow-num">2</div><div class="flow-text">Enters email → Thirdweb sends OTP → user verifies. <strong>Smart account created silently</strong> in the background.</div></div>
+      <div class="flow-step"><div class="flow-num">3</div><div class="flow-text">User selects role: Patient, Doctor, or Lab. <strong>Paymaster sponsors</strong> the registration transaction — user sees no gas fee.</div></div>
+      <div class="flow-step" style="margin-bottom:0"><div class="flow-num">4</div><div class="flow-text">Redirected to their role-specific dashboard. <strong>No wallet extension, no seed phrase, no ETH required.</strong></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:10px">
+    <div class="card-header"><div class="card-icon">📋</div><div class="card-title">Lab uploads a medical report</div></div>
+    <div class="card-body">
+      <div class="flow-step"><div class="flow-num">1</div><div class="flow-text">Lab enters <strong>patient wallet address</strong>, selects PDF/image file.</div></div>
+      <div class="flow-step"><div class="flow-num">2</div><div class="flow-text">Client-side: Lit Protocol <strong>encrypts the file</strong> with access condition keyed to patient's address.</div></div>
+      <div class="flow-step"><div class="flow-num">3</div><div class="flow-text">Encrypted blob <strong>uploaded to IPFS via Pinata</strong> → returns CID.</div></div>
+      <div class="flow-step" style="margin-bottom:0"><div class="flow-num">4</div><div class="flow-text"><strong>CID hash stored on-chain</strong> via <span style="font-family:var(--font-mono);font-size:12px">addRecord()</span>. Transaction sponsored by Paymaster.</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:0">
+    <div class="card-header"><div class="card-icon">🩺</div><div class="card-title">Doctor views a patient report</div></div>
+    <div class="card-body">
+      <div class="flow-step"><div class="flow-num">1</div><div class="flow-text">Doctor searches patient by wallet address. Contract confirms <strong>access is granted</strong> via <span style="font-family:var(--font-mono);font-size:12px">hasAccess()</span>.</div></div>
+      <div class="flow-step"><div class="flow-num">2</div><div class="flow-text">Report list loaded from chain. Doctor selects a record → IPFS fetches the <strong>encrypted blob</strong>.</div></div>
+      <div class="flow-step" style="margin-bottom:0"><div class="flow-num">3</div><div class="flow-text">Lit Protocol verifies on-chain access condition → releases <strong>decryption key</strong> → file decrypts in-browser. Doctor reads the report.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 -->
+<section id="s8">
+  <div class="section-label"><div class="section-num">08</div><h2>Non-functional requirements</h2></div>
+
+  <div class="nfr-grid">
+    <div class="nfr-card">
+      <div class="nfr-title">Privacy & security</div>
+      <div class="nfr-item">Raw medical data never touches the blockchain</div>
+      <div class="nfr-item">All files encrypted client-side before upload</div>
+      <div class="nfr-item">Access control enforced by Lit on-chain conditions</div>
+      <div class="nfr-item">Revocation takes effect immediately (no caching)</div>
+      <div class="nfr-item">No centralised server holds user keys</div>
+    </div>
+    <div class="nfr-card">
+      <div class="nfr-title">User experience</div>
+      <div class="nfr-item">First login to dashboard under 30 seconds</div>
+      <div class="nfr-item">Zero gas fees for standard user actions</div>
+      <div class="nfr-item">No crypto wallet extension required ever</div>
+      <div class="nfr-item">Mobile-responsive layout (Tailwind breakpoints)</div>
+      <div class="nfr-item">Skeleton loaders for all async contract reads</div>
+    </div>
+    <div class="nfr-card">
+      <div class="nfr-title">Smart contract quality</div>
+      <div class="nfr-item">≥90% line coverage via Foundry tests</div>
+      <div class="nfr-item">Fuzz tests on all financial functions</div>
+      <div class="nfr-item">Re-entrancy guards on withdraw() and refund()</div>
+      <div class="nfr-item">Events emitted for every state change</div>
+      <div class="nfr-item">Verified and published on Etherscan/Polygonscan/Basescan</div>
+    </div>
+    <div class="nfr-card">
+      <div class="nfr-title">Multi-chain</div>
+      <div class="nfr-item">Contract addresses config-driven per chain</div>
+      <div class="nfr-item">Chain switching via Thirdweb's built-in selector</div>
+      <div class="nfr-item">Deployed to Base, Polygon PoS, Arbitrum One mainnets</div>
+      <div class="nfr-item">Foundry deploy script is single-run, reproducible</div>
+      <div class="nfr-item">ABI stored in repo, imported in frontend</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8b — Chains -->
+<section>
+  <div class="section-label"><div class="section-num" style="background:var(--blue-light);color:var(--blue);border-color:var(--blue-border)">↗</div><h2>Target chains</h2></div>
+  <div class="chain-grid">
+    <div class="chain-card chain-primary">
+      <div class="chain-label">Primary</div>
+      <div class="chain-name">Base</div>
+      <div class="chain-reason">Coinbase L2, largest consumer dApp growth, cheapest gas, ideal for first-time users</div>
+    </div>
+    <div class="chain-card chain-secondary">
+      <div class="chain-label">Secondary</div>
+      <div class="chain-name">Polygon PoS</div>
+      <div class="chain-reason">40M+ ERC-4337 smart accounts deployed, battle-tested AA tooling, familiar to Indian users</div>
+    </div>
+    <div class="chain-card chain-tertiary">
+      <div class="chain-label">Tertiary</div>
+      <div class="chain-name">Arbitrum One</div>
+      <div class="chain-reason">~0.1 Gwei avg gas, deepest DeFi ecosystem for crowdfunding, strong developer credibility</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 -->
+<section id="s9">
+  <div class="section-label"><div class="section-num">09</div><h2>Build milestones</h2></div>
+
+  <div class="milestone">
+    <div class="ms-week">Week 1–2</div>
+    <div class="ms-body">
+      <div class="ms-title">Foundation</div>
+      <div class="ms-tasks">Foundry project init · write and test all 4 contracts · deploy to testnets · Vite + React + TypeScript + Tailwind scaffold · wagmi v2 + Thirdweb v5 setup · wallet auth working with email</div>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="ms-week">Week 3–4</div>
+    <div class="ms-body">
+      <div class="ms-title">Core records feature</div>
+      <div class="ms-tasks">Pinata IPFS integration · Lit Protocol encryption/decryption · Lab upload flow end-to-end · Patient view flow · Doctor access grant/revoke UI · Access-gated decryption working</div>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="ms-week">Week 5–6</div>
+    <div class="ms-body">
+      <div class="ms-title">Campaigns + multi-chain</div>
+      <div class="ms-tasks">Campaign creation, listing, and detail views · Donate and refund flows · Foundry deploy scripts for all 3 mainnets · Chain selector UI · Contract address config per chain · Paymaster live on Base</div>
+    </div>
+  </div>
+  <div class="milestone">
+    <div class="ms-week">Week 7</div>
+    <div class="ms-body">
+      <div class="ms-title">Polish & verification</div>
+      <div class="ms-tasks">Skeleton loaders · toast notifications · profile page · mobile layout · contract verification on Basescan, Polygonscan, Arbiscan · README with architecture diagram</div>
+    </div>
+  </div>
+  <div class="milestone" style="margin-bottom:0">
+    <div class="ms-week">Week 8</div>
+    <div class="ms-body">
+      <div class="ms-title">Portfolio hardening</div>
+      <div class="ms-tasks">Foundry coverage report ≥90% · Fuzz test logs committed · Foundry script demo video · Live demo on Vercel · LinkedIn post with architecture walkthrough</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 -->
+<section id="s10">
+  <div class="section-label"><div class="section-num">10</div><h2>Portfolio differentiators for Web3 job hunt</h2></div>
+
+  <div class="differentiator">
+    <div class="diff-title">ERC-4337 account abstraction in production</div>
+    <div class="diff-desc">Not just understanding the concept — actually shipping gasless email onboarding with a Paymaster. Few junior/mid devs have this. Mention the smart account address in your README.</div>
+  </div>
+  <div class="differentiator">
+    <div class="diff-title">Lit Protocol for medical-grade privacy</div>
+    <div class="diff-desc">Demonstrates you know that "blockchain ≠ public ≠ private". Decentralised key management is a real interview differentiator. Show the access condition logic in your code walkthrough.</div>
+  </div>
+  <div class="differentiator">
+    <div class="diff-title">Foundry tests with coverage + fuzz testing</div>
+    <div class="diff-desc">The clearest signal that you take smart contract correctness seriously. Commit your fuzz test failure logs as proof of depth. Most portfolio projects have zero tests.</div>
+  </div>
+  <div class="differentiator" style="margin-bottom:0">
+    <div class="diff-title">Scripted multi-chain deployment</div>
+    <div class="diff-desc">A single Foundry script that deploys to 3 mainnets with env-controlled private keys is production discipline. Screenshot the verified contracts page on all 3 explorers for your README hero section.</div>
+  </div>
+</section>
+
+<!-- Risks -->
+<div class="divider"></div>
+<section>
+  <div class="section-label"><div class="section-num" style="background:var(--coral-light);color:var(--coral);border-color:var(--coral-border)">!</div><h2>Risk register</h2></div>
+  <div class="risk-row" style="margin-bottom:0">
+    <div style="color:var(--color-text-secondary);font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:500">Risk</div>
+    <div style="color:var(--color-text-secondary);font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:500">Mitigation</div>
+    <div style="color:var(--color-text-secondary);font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:500">Severity</div>
+  </div>
+  <div class="risk-row"><div>Lit Protocol latency on decrypt</div><div>Cache decrypted blobs in sessionStorage with TTL</div><div><span class="pill pill-amber">Medium</span></div></div>
+  <div class="risk-row"><div>Paymaster cost overrun</div><div>Cap sponsored gas per user per day; Thirdweb dashboard alerts</div><div><span class="pill pill-amber">Medium</span></div></div>
+  <div class="risk-row"><div>Pinata IPFS gateway down</div><div>Add public gateway fallback (dweb.link); optional web3.storage backup</div><div><span class="pill pill-teal">Low</span></div></div>
+  <div class="risk-row"><div>Thirdweb v5 API breaking change</div><div>Pin SDK version in package.json; check changelog before upgrades</div><div><span class="pill pill-teal">Low</span></div></div>
+  <div class="risk-row"><div>Smart contract bug post-deploy</div><div>Foundry fuzz tests + tesnet dry-run before every mainnet deploy</div><div><span class="pill pill-coral">High</span></div></div>
+</section>
+
+<div class="divider"></div>
+<p style="font-size:12px;color:var(--color-text-secondary);text-align:center">MediChain v2 PRD · Toushief Ansari · txusif.dev · Ready for agent handoff</p>
+
+</div>
