@@ -1,0 +1,32 @@
+{
+  "name": "medichain-v2",
+  "version": "2.0.0",
+  "description": "Decentralised medical records & crowdfunding — rebuilt for 2025",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "type-check": "turbo run type-check",
+    "contracts:test": "cd packages/contracts && forge test -vvv",
+    "contracts:coverage": "cd packages/contracts && forge coverage --report lcov",
+    "contracts:deploy:base": "cd packages/contracts && forge script scripts/Deploy.s.sol:DeployScript --rpc-url $BASE_RPC_URL --broadcast --verify",
+    "contracts:deploy:polygon": "cd packages/contracts && forge script scripts/Deploy.s.sol:DeployScript --rpc-url $POLYGON_RPC_URL --broadcast --verify",
+    "contracts:deploy:arbitrum": "cd packages/contracts && forge script scripts/Deploy.s.sol:DeployScript --rpc-url $ARBITRUM_RPC_URL --broadcast --verify",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.14"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.10.2"
+}
